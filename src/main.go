@@ -20,8 +20,8 @@ type Libraries struct {
 
 type Event struct {
 	ID     int
-	LibID  int
-	Req    bool
+	LibID  string
+	Req    string
 	Name   string
 	Stime  string
 	Etime  string
@@ -72,9 +72,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
     return;
   }
 
-  sql.Query("INSERT INTO events (Name, LibId, Req, `date`, Stime, Etime, `desc`) VALUES ($1,$2,$3,$4,$5,$6,$7)",
-      name, library, eventtype, date, starttime,
-      endtime, description)
+  sql.Query("INSERT INTO events (Name, LibId, Req, Stime, Etime, `date`, `desc`) VALUES ($1,$2,$3,$4,$5,$6,$7)",
+      name, library, eventtype, starttime,
+      endtime, date, description)
 
   content := readHtml("../submitForm.html")
   fmt.Println(content)
@@ -98,7 +98,7 @@ func InitDB() *sql.DB {
 }
 
 /// Queries the database for all events at a given library
-func libEvents (db *sql.DB, LID int) *sql.Rows {
+func libEvents (db *sql.DB, LID string) *sql.Rows {
 	sql_libEvents :=`SELECT * FROM events WHERE  libId = $1`
 	rows, err := db.Query(sql_libEvents, LID)
 	if err != nil { panic(err) }
