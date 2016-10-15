@@ -1,7 +1,7 @@
 
 CREATE TABLE IF NOT EXISTS events(
   Id INTEGER PRIMARY KEY,
-  LibId INT,
+  LibId TEXT,
   Req  TEXT,
   Name TEXT,
   Stime TEXT,

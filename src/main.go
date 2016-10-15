@@ -20,8 +20,8 @@ type Libraries struct {
 
 type Event struct {
 	ID     int
-	LibID  int
-	Req    bool
+	LibID  string
+	Req    string
 	Name   string
 	Stime  string
 	Etime  string
@@ -98,7 +98,7 @@ func InitDB() *sql.DB {
 }
 
 /// Queries the database for all events at a given library
-func libEvents (db *sql.DB, LID int) *sql.Rows {
+func libEvents (db *sql.DB, LID string) *sql.Rows {
 	sql_libEvents :=`SELECT * FROM events WHERE  libId = $1`
 	rows, err := db.Query(sql_libEvents, LID)
 	if err != nil { panic(err) }
