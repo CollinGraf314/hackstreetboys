@@ -1,6 +1,182 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<title>@TheBrary</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<style type="text/css">
+		html, body {
+    		height: 100%;
+    		margin: 0;
+    		padding: 0;
+		}
+		#map {
+			height: 450px;
+    		width: 600px;
+    		margin: auto;
+    		border-radius: 10px;
+		}
+	</style>
+
+</head>
+<header>
+	<h1 class="center" id="title">At the 'Brary</h1>
+</header>
+<body>
+<div class="container">
+<div id="map" class="item">
+</div>
+	<script>
+		var features = INSERT_FEATURES_MACRO;
+	</script>
+	<script>
+		function initMap() {
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 44.476, lng: -73.212},
+				zoom: 10
+			});
+			var library = 'libraryLocation.png';
+			var currnetLoc = 'myLocation.png';
+
+			//function addLibraryMarker(feature){
+			//    var marker = new google.maps.Marker({
+			//        postion: feature.position,
+			//        icon: icons[feature.type],
+			//        map: map
+			//    });
+			//}
+			google.maps.event.addListener(map, 'click', function(event) {
+				placeMarker(event.latLng, library);
+			});
+
+			function placeMarker(location, pic) {
+				var infowindow = new google.maps.InfoWindow({
+					content: "this is a dropped pin"
+				});
+				var marker = new google.maps.Marker({
+					position: location,
+					icon: pic,
+					map: map
+				});
+				marker.addListener('click', function() {
+					infowindow.open(map, marker);
+				});
+			}
+			var features = [
+				{
+					//position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+					//type: 'current'
+				}
+			];
+
+			//use php to duplicate code in comment for each library in dataset.
+			//var marker = new google.maps.Marker({
+			//position: myLatLng,
+			//map: map,
+			//title: 'Hello World!'
+			//});
+			if (navigator.geolocation) {
+				navigator.geolocation.watchPosition(function(position) {
+					var pos = {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude
+					};
+					var currentLocation = new google.maps.LatLng(pos.lat, pos.lng);
+					placeMarker(currentLocation, currnetLoc);
+
+					map.setCenter(pos);
+				}, function() {
+					handleLocationError(true, map.getCenter());
+				});
+			} else {
+				// Browser doesn't support Geolocation
+				handleLocationError(false, map.getCenter());
+			}
+		}
+
+		function handleLocationError(browserHasGeolocation, pos) {
+		}
+		//for (var i = 0, feature; feature = features[i]; i++) {
+		//  addLibraryMarker(feature);
+		//}
+	</script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhZ9PFkK-3Kqk_ewYPTvtcZmkAroOlV3k&callback=initMap">
+    </script>
+	<div id="eventform" class="item"><h2 id="toggleForm" class="center">Request or Post an Event</h2>
+    <form id="show">
+    	Name:<br>
+    	<input type="text" name="name"><br>
+    	Choose a library:<br>
+    	<select name="library">
+        	<option value="a">Library A</option>
+        	<option value="b">Library B</option>
+    	</select><br>
+    	I am...<br>
+    	<input type="radio" name="eventtype" value="request">Requesting an event<br>
+    	<input type="radio" name="eventtype" value="host">Hosting an event<br>
+    	Event date:<br>
+    	<input type="date" name="date"><br>
+    	Start time:<br>
+    	<input type="time" name="starttime"><br>
+    	End time:<br>
+    	<input type="time" name="endtime"><br>
+    	Enter a description for your event:<br>
+    	<textarea name="desc" rows="7" cols="60"></textarea><br>
+
+    	<input type="submit" value="Submit">
+	</form>
+	</div>
+	</div>
+    <table id="posted_events"><h2>Posted Events</h2>
+		<tr>
+			<th>Host</th>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td class="name">(Name)</td>
+			<td class="date">(date)</td>
+			<td class="time">(starttime)-(endtime)</td>
+			<td class="desc">(description)</td>
+		</tr>
+		<tr>
+			<td class="name">(Name)</td>
+			<td class="date">(date)</td>
+			<td class="time">(starttime)-(endtime)</td>
+			<td class="desc">(description)</td>
+		</tr>
+	</table>
+    <table id="requested_events"><h2>Requested Events</h2>
+		<tr>
+			<th>Requester</th>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td class="name">(Name)</td>
+			<td class="date">(date)</td>
+			<td class="time">(starttime)-(endtime)</td>
+			<td class="desc">(description)</td>
+		</tr>
+		<tr>
+			<td class="name">(Name)</td>
+			<td class="date">(date)</td>
+			<td class="time">(starttime)-(endtime)</td>
+			<td class="desc">(description)</td>
+		</tr>
+	</table>
+	<script type="text/javascript" src="scriptfile.js"></script>
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <title>@TheBrary</title>
