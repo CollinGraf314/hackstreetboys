@@ -72,7 +72,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
     return;
   }
 
-  sql.Query("INSERT INTO events VALUES ($1,$2,$3,$4,$5,$6,$7)",
+  sql.Query("INSERT INTO events (Name, LibId, Req, `date`, Stime, Etime, `desc`) VALUES ($1,$2,$3,$4,$5,$6,$7)",
       name, library, eventtype, date, starttime,
       endtime, description)
 
