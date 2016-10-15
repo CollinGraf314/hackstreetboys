@@ -29,8 +29,33 @@ type Event struct {
 	Desc   string
 }
 
-/// Handles the POST requests from the form on the main page
+func readHtml(filename string) string {
+  file, err := os.Open(filename)
+  if (err != nil) {
+    fmt.Printf("An error occured while trying to open the '%s' file\n", filename);
+    return "";
+  } else {
+    fmt.Println("Opened file successfully")
+  }
+
+  var htmlBuffer []byte = make([]byte, 1024 * 1024)
+  nBytes, errRead := file.Read(htmlBuffer)
+
+  if (errRead != nil) {
+    fmt.Printf("An error occured while trying to read from the %s file\n", filename)
+    return "";
+  } else {
+    fmt.Println("Read from the file successfully")
+    fmt.Printf("%d bytes read\n", nBytes)
+  }
+
+  strContents := string(htmlBuffer[:nBytes])
+  return strContents
+}
+
+/// Handles the GET requests from the form on the main page
 func handler(w http.ResponseWriter, r *http.Request) {
+  fmt.Println("Handler on /submitForm")
   var (
     name = r.FormValue("name")
     library = r.FormValue("library")
@@ -42,47 +67,32 @@ func handler(w http.ResponseWriter, r *http.Request) {
   )
 
   sql := InitDB()
+  if (sql == nil) {
+    fmt.Println("ERROR: SQL is NIL")
+    return;
+  }
+
   sql.Query("INSERT INTO events VALUES ($1,$2,$3,$4,$5,$6,$7)",
       name, library, eventtype, date, starttime,
       endtime, description)
+
+  content := readHtml("../submitForm.html")
+  fmt.Println(content)
+  fmt.Fprint(w, content)
 }
 
 /// Handler for "/"
 func mainHandler(w http.ResponseWriter, r *http.Request) {
-fmt.Println("Recieved on /")
-  file, err := os.Open("../index.html")
-  if (err != nil) {
-    fmt.Println("An error occured while trying to open the 'index.html' file");
-    return;
-  } else {
-    fmt.Println("Opened file successfully")
-  }
-
-  var htmlBuffer []byte = make([]byte, 1024 * 1024)
-  nBytes, errRead := file.Read(htmlBuffer)
-
-  if (errRead != nil) {
-    fmt.Println("An error occured while trying to read from the index.html file")
-    return;
-  } else {
-    fmt.Println("Read from the file successfully")
-    fmt.Printf("%d bytes read\n", nBytes)
-  }
-
-  strContents := string(htmlBuffer[:nBytes])
+  strContents := readHtml("../index.html")
   fmt.Println(strContents)
   fmt.Fprint(w, strContents)
 }
 
-var __db *sql.DB
-
 /// Idempotent function which creates a singleton instance of the database
 func InitDB() *sql.DB {
-  if (__db == nil) {
-	   __db, err := sql.Open("sqlite3", "../realdb.db")
-	   if err != nil { panic(err) }
-	   if __db == nil { panic("db nil") }
-  }
+	__db, err := sql.Open("sqlite3", "../realdb.db")
+	if err != nil { panic(err) }
+  if __db == nil { panic("db nil") }
 
 	return __db
 }
