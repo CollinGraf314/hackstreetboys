@@ -1,0 +1,122 @@
+:root{
+    --bg_color: #EFEFEF;
+    --header_bg_color: #C90AFF;
+    --input_bg_color: #E4E3D3;
+    --text_color: #003000;
+    --title_color: #000030;
+}
+header{
+    background-color: var(--header_bg_color);
+}
+html{
+    font-family: Times,serif;
+    background-color: var(--bg_color);
+    color: var(--text_color);
+}
+h1,h2{
+    color: var(--title_color);
+}
+tr:nth-child(odd){
+    background-color: var(--header_bg_color);
+    color: white;
+}
+li{
+    display: block;
+}
+input,textarea{
+    background-color: var(--input_bg_color);
+}
+h1.center{
+    text-align: center;
+}
+#title{
+    margin: 0px;
+    padding: 1em;
+    text-shadow:   1px 0px #eee, 0px 1px #ccc,
+    2px 1px #eee, 1px 2px #ccc,
+    3px 2px #eee;
+}
+.container{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+#eventform{
+    height: 740px;
+}
+#toggleForm{
+    text-align: center;
+    border: solid thin grey;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    background: grey;
+    background: linear-gradient(lightgrey,grey);
+    background: -webkit-linear-gradient(lightgrey,grey);
+    background: -o-linear-gradient(lightgrey,grey);
+    background: -moz-linear-gradient(lightgrey,grey);
+}
+#toggleForm:active{
+    background: darkgrey;
+    background: linear-gradient(grey,lightgrey);
+    background: -webkit-linear-gradient(grey,lightgrey);
+    background: -o-linear-gradient(grey,lightgrey);
+    background: -moz-linear-gradient(grey,lightgrey);
+}
+.item{
+    flex-grow: 2;
+    flex-shrink: 2;
+    margin: auto;
+    max-width: 40%;
+    vertical-align: top;
+}
+form{
+    line-height: 1.7em;
+    display: none;
+}
+td,th{
+    padding: .5em;
+    border-collapse: collapse;
+
+}
+.desc{
+    padding: 1.5em;
+    border: solid 2px black;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+}
+table{
+    padding-bottom: 2em;
+}
+@media (max-width: 1024px){
+    .container{
+        flex-direction: column;
+        padding-top: 70px;
+    }
+    .item {
+        max-width: 80%;
+    }
+}
+input, select, textarea, select {
+    width: 40%;
+    padding: 10px 15px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #FAFFFA;
+}
+input[type=radio]{
+    padding: 0px;
+    display: inline;
+    width: 15px;
+}
+textarea {
+    width: 80%;
+}
+input:active, select:active, textarea:active, select:active, input:focus, select:focus, textarea:focus, select:focus {
+    background-color: #DCDFDC;
+}
