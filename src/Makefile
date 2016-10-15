@@ -1,14 +1,12 @@
-VPATH=src
-
 SRC=main.go
 
 all: build
 
 deps:
-	echo "Nothing to do now"
+	@echo "Nothing to do now"
 
 build:
 	go build $(SRC)
 
-run build:
+run:
 	go run $(SRC)
