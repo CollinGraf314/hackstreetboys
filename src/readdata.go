@@ -2,7 +2,7 @@ package readdata
 
 /*
  * Note: This is temporary. I don't believe that this will be used at the end
-         delete in cleanup if not used
+ *       delete in cleanup if not used
 */
 
 import "os"
