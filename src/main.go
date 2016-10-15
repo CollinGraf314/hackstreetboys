@@ -6,6 +6,7 @@ import (
     "database/sql"
     _"github.com/mattn/go-sqlite3"
     "os"
+    "strings"
 )
 
 type Libraries struct {
@@ -51,8 +52,8 @@ func readHtml(filename, requests, hosts string) string {
 
   strContents := string(htmlBuffer[:nBytes])
 
-  strContents = strings.Replace(strContents, "___REQUESTED_EVENTS_ELEMENTS___", requests)
-  strContents = strings.Replace(strContents, "___HOSTED_EVENTS_ELEMENTS___", hosts)
+  strContents = strings.Replace(strContents, "___REQUESTED_EVENTS_ELEMENTS___", requests, 1)
+  strContents = strings.Replace(strContents, "___HOSTED_EVENTS_ELEMENTS___", hosts, 1)
 
 
   return strContents
@@ -72,18 +73,18 @@ func handler(w http.ResponseWriter, r *http.Request) {
     description = r.FormValue("description")
   )
 
-  sql := InitDB()
-  if (sql == nil) {
+  table := InitDB()
+  if (table == nil) {
     fmt.Println("ERROR: SQL is NIL")
     return;
   }
 
-  sql.Query("INSERT INTO events (Name, LibId, Req, `date`, Stime, Etime, `desc`) VALUES (\"$1\",$2,\"$3\",\"$4\",\"$5\",\"$6\",\"$7\");",
+  table.Query("INSERT INTO events (Name, LibId, Req, `date`, Stime, Etime, `desc`) VALUES (\"$1\",$2,\"$3\",\"$4\",\"$5\",\"$6\",\"$7\");",
       name, library, eventtype, date, starttime,
       endtime, description)
 
-  reqests := libEvents(sql, library, "request")
-  hosts := libEvents(sql, library, "host")
+  requests := libEvents(table, library, "request")
+  hosts := libEvents(table, library, "host")
 
   content := readHtml("../submitForm.html", requests, hosts)
   fmt.Fprint(w, content)
@@ -92,7 +93,17 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 /// Handler for "/"
 func mainHandler(w http.ResponseWriter, r *http.Request) {
-  strContents := readHtml("../index.html")
+
+  table := InitDB()
+  if (table == nil) {
+    fmt.Println("ERROR: SQL is NIL")
+    return
+  }
+
+  requests := libEvents(table, "Guildhall Public", "request")
+  hosts := libEvents(table, "Guildhall Public", "host")
+
+  strContents := readHtml("../index.html", requests, hosts)
   fmt.Println(strContents)
   fmt.Fprint(w, strContents)
 }
@@ -109,7 +120,7 @@ func InitDB() *sql.DB {
 
 
 /// Queries the database for all events at a given library
-func libEvents (db *sql.DB, LID int, eType string) string {
+func libEvents(db *sql.DB, LID string, eType string) string {
 	sql_libEvents :=`SELECT * FROM events WHERE libId = $1 and Req = $2`
 	rows, err := db.Query(sql_libEvents, LID, eType)
 	if err != nil { panic(err) }
@@ -122,7 +133,7 @@ func libEvents (db *sql.DB, LID int, eType string) string {
 
       err = rows.Scan(&name, &library, &eventtype, &date, &starttime, &endtime, &description)
 
-      element += Sprintf(`
+      element += fmt.Sprintf(`
         <tr>
           <td>%s</td>
           <td>%s</td>
@@ -132,11 +143,13 @@ func libEvents (db *sql.DB, LID int, eType string) string {
           <td>%s</td>
           <td>%s</td>
         </tr>
-      `, name, library, eventtype, data, starttime, endtime, description)
+      `, name, library, eventtype, date, starttime, endtime, description)
   }
 
 	return element
 }
+
+
 
 func main() {
 
