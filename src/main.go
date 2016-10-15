@@ -20,7 +20,7 @@ type Libraries struct {
 
 type Event struct {
 	ID     int
-	LibID  int
+	LibID  string
 	Req    string
 	Name   string
 	Stime  string
@@ -53,7 +53,7 @@ func readHtml(filename, requests, hosts string) string {
 
   strContents = strings.Replace(strContents, "___REQUESTED_EVENTS_ELEMENTS___", requests)
   strContents = strings.Replace(strContents, "___HOSTED_EVENTS_ELEMENTS___", hosts)
-  
+
 
   return strContents
 }
@@ -78,7 +78,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
     return;
   }
 
-  sql.Query("INSERT INTO events (Name, LibId, Req, `date`, Stime, Etime, `desc`) VALUES ($1,$2,$3,$4,$5,$6,$7)",
+  sql.Query("INSERT INTO events (Name, LibId, Req, `date`, Stime, Etime, `desc`) VALUES (\"$1\",$2,\"$3\",\"$4\",\"$5\",\"$6\",\"$7\");",
       name, library, eventtype, date, starttime,
       endtime, description)
 
