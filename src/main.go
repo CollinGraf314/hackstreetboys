@@ -133,7 +133,7 @@ func libEvents (db *sql.DB, LID int, eType string) string {
           <td>%s</td>
           <td>%s</td>
         </tr>
-      `, name, library, eventtype, data, starttime, endtime, description)
+      `, name, library, eventtype, date, starttime, endtime, description)
   }
 
 	return element
