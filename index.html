@@ -31,13 +31,14 @@
     <div id="map" class="item">
     </div>
     <script>
+
+        var library = 'libraryLocation.png';
+        var currnetLoc = 'myLocation.png';
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 44.476, lng: -73.212},
                 zoom: 10
             });
-            var library = 'libraryLocation.png';
-            var currnetLoc = 'myLocation.png';
 
             //function addLibraryMarker(feature){
             //    var marker = new google.maps.Marker({
@@ -46,13 +47,10 @@
             //        map: map
             //    });
             //}
-            google.maps.event.addListener(map, 'click', function (event) {
-                placeMarker(event.latLng, library);
-            });
 
-            function placeMarker(location, pic) {
+            function placeMarker(location, pic, name) {
                 var infowindow = new google.maps.InfoWindow({
-                    content: "this is a dropped pin"
+                    content: name
                 });
                 var marker = new google.maps.Marker({
                     position: location,
@@ -61,15 +59,9 @@
                 });
                 marker.addListener('click', function () {
                     infowindow.open(map, marker);
+                    var select = document.getElementById("library").value = name;
                 });
             }
-
-            var features = [
-                {
-                    //position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-                    //type: 'current'
-                }
-            ];
 
             //use php to duplicate code in comment for each library in dataset.
             //var marker = new google.maps.Marker({
@@ -84,7 +76,7 @@
                         lng: position.coords.longitude
                     };
                     var currentLocation = new google.maps.LatLng(pos.lat, pos.lng);
-                    placeMarker(currentLocation, currnetLoc);
+                    placeMarker(currentLocation, currnetLoc, "This is You!");
 
                     map.setCenter(pos);
                 }, function () {
@@ -94,25 +86,1498 @@
                 // Browser doesn't support Geolocation
                 handleLocationError(false, map.getCenter());
             }
+            var libs = [
+                {
+                    library : 'Guildhall Public',
+                    county : 'Essex',
+                    position : {lat: 44.56758508700045, lng:-71.58903136899966},
+                    web_address : 'N/R',
+                    city : 'Guildhall',
+                    type : library
+                },
+                {
+                    library : 'John W. Simpson Memorial',
+                    county : 'Orleans',
+                    position : {lat: 44.63322055500049, lng:-72.32728433299962},
+                    web_address : 'N/A',
+                    city : 'Craftsbury Common',
+                    type : library
+                },
+                {
+                    library : 'South Ryegate Public',
+                    county : 'Caledonia',
+                    position : {lat: 44.186405771000466,lng: -72.14030334299963},
+                    web_address : 'N/R',
+                    city : 'South Ryegate',
+                    type : library
+                },
+                {
+                    library : 'Poultney Public',
+                    county : 'Rutland',
+                    position : {lat: 43.51705210400047, lng:-73.23696118299966},
+                    web_address : 'poultneypubliclibrary.com',
+                    city : 'Poultney',
+                    type : library
+                },
+                {
+                    library : 'Windsor Public',
+                    county : 'Windsor',
+                    position : {lat: 43.4805225450005, lng:-72.38846438699966},
+                    web_address : 'windsorlibrary.org',
+                    city : 'Windsor',
+                    type : library
+                },
+                {
+                    library : 'Leach Public',
+                    county : 'Orleans',
+                    position : {lat: 44.80288147100049, lng:-72.27829179399964},
+                    web_address : 'N/R',
+                    city : 'Irasburg',
+                    type : library
+                },
+                {
+                    library : 'Tenney Memorial',
+                    county : 'Orange',
+                    position : {lat: 44.08021397800047, lng:-72.05636897499966},
+                    web_address : 'http://tenneymemoriallibrary.org/',
+                    city : 'Newbury',
+                    type : library
+                },
+                {
+                    library : 'West Hartford',
+                    county : 'Windsor',
+                    position : {lat: 43.71250218500046, lng:-72.41741609399963},
+                    web_address : 'N/R',
+                    city : 'West Hartford',
+                    type : library
+                },
+                {
+                    library : 'Cavendish Fletcher Community',
+                    county : 'Windsor',
+                    position : {lat: 43.383584544000485,lng: -72.63697601699965},
+                    web_address : 'www.cavendishlibrary.org',
+                    city : 'Proctorsville',
+                    type : library
+                },
+                {
+                    library : 'Goodrich Memorial',
+                    county : 'Orleans',
+                    position : {lat: 44.93554600100049, lng:-72.21010888899963},
+                    web_address : 'www.goodrichlibrary.org',
+                    city : 'Newport',
+                    type : library
+                },
+                {
+                    library : 'Isle La Motte Free Public',
+                    county : 'Grand Isle',
+                    position : {lat: 44.878198075000455,lng: -73.33818793099965},
+                    web_address : 'N/R',
+                    city : 'Isle La Motte',
+                    type : library
+                },
+                {
+                    library : 'South  Burlington Community',
+                    county : 'Chittenden',
+                    position : {lat: 44.45430857700046, lng:-73.17889135799965},
+                    web_address : 'http://sbcl.sbschools.net',
+                    city : 'S. Burlington',
+                    type : library
+                },
+                {
+                    library : 'Rutland Free',
+                    county : 'Rutland',
+                    position : {lat: 43.6071667220005, lng:-72.97558449699966},
+                    web_address : 'rutlandfree.org',
+                    city : 'Rutland',
+                    type : library
+                },
+                {
+                    library : 'Varnum Memorial',
+                    county : 'Lamoille',
+                    position : {lat: 44.64640557100046, lng:-72.82823684199963},
+                    web_address : 'www.thevarnum.org',
+                    city : 'Jeffersonville',
+                    type : library
+                },
+                {
+                    library : 'Fairfax Community',
+                    county : 'Franklin',
+                    position : {lat: 44.66303705000047, lng:-73.01351995099964},
+                    web_address : 'www.fairfaxvtlibrary.org',
+                    city : 'Fairfax',
+                    type : library
+                },
+                {
+                    library : 'Norman Williams Public',
+                    county : 'Windsor',
+                    position : {lat: 43.62455286700049, lng:-72.51898289499962},
+                    web_address : 'www.normanwilliams.org',
+                    city : 'Woodstock',
+                    type : library
+                },
+                {
+                    library : 'Hitchcock Museum & Library',
+                    county : 'Orleans',
+                    position : {lat: 44.88767572000046, lng:-72.42897830099963},
+                    web_address : 'N/R',
+                    city : 'Westfield',
+                    type : library
+                },
+                {
+                    library : 'McIndoes Academy',
+                    county : 'Caledonia',
+                    position : {lat: 44.26431504700048, lng:-72.06421331999962},
+                    web_address : 'N/R',
+                    city : 'McIndoe Falls',
+                    type : library
+                },
+                {
+                    library : 'West Rutland Public',
+                    county : 'Rutland',
+                    position : {lat: 43.594914005000476,lng: -73.04894445599967},
+                    web_address : 'westrutlandpubliclibrary@weebly.com',
+                    city : 'West Rutland',
+                    type : library
+                },
+                {
+                    library : 'Jones Memorial',
+                    county : 'Orleans',
+                    position : {lat: 44.81092124300045, lng:-72.20214610399967},
+                    web_address : 'jonesmemoriallibrary.wordpress.com',
+                    city : 'Orleans',
+                    type : library
+                },
+                {
+                    library : 'G. M. Kelley Community',
+                    county : 'Lamoille',
+                    position : {lat: 44.54222281900047, lng:-72.45793647599965},
+                    web_address : 'gmk_wolcott@vals.state.vt.us',
+                    city : 'Wolcott',
+                    type : library
+                },
+                {
+                    library : 'Ainsworth Public',
+                    county : 'Orange',
+                    position : {lat: 44.12250924300048, lng:-72.54128875299966},
+                    web_address : 'ainsworthpubliclibrary.wordpress.com',
+                    city : 'Williamstown',
+                    type : library
+                },
+                {
+                    library : 'Stowe Free',
+                    county : 'Lamoille',
+                    position : {lat: 44.4642824660005, lng:-72.68464494899968},
+                    web_address : 'http://www.stowelibrary.org/',
+                    city : 'Stowe',
+                    type : library
+                },
+                {
+                    library : 'Chelsea Public',
+                    county : 'Orange',
+                    position : {lat: 43.98917315200049, lng:-72.44766354599966},
+                    web_address : 'http://chelsealibrary.kohavt.org',
+                    city : 'Chelsea',
+                    type : library
+                },
+                {
+                    library : 'Brooks Memorial',
+                    county : 'Windham',
+                    position : {lat: 42.85536749100049, lng:-72.55961275299967},
+                    web_address : 'http://www.brooks.lib.vt.us',
+                    city : 'Brattleboro',
+                    type : library
+                },
+                {
+                    library : 'Russell Memorial',
+                    county : 'Addison',
+                    position : {lat: 44.25427423400049, lng:-73.12308526299967},
+                    web_address : 'russelllibraryvt.wordpress.com',
+                    city : 'Monkton',
+                    type : library
+                },
+                {
+                    library : 'Sheldon Public',
+                    county : 'Franklin',
+                    position : {lat: 44.88064269600045, lng:-72.94634853199966},
+                    web_address : 'Sheldon-pl@vals.state.vt.us',
+                    city : 'Sheldon',
+                    type : library
+                },
+                {
+                    library : 'Pettee Memorial',
+                    county : 'Windham',
+                    position : {lat: 42.867912757000454,lng: -72.87196405799966},
+                    web_address : 'petteelibrary.org',
+                    city : 'Wilmington',
+                    type : library
+                },
+                {
+                    library : 'Alice M. Ward Memorial',
+                    county : 'Essex',
+                    position : {lat: 44.99548778500048, lng:-71.53898926899967},
+                    web_address : 'http://alicewardmemoriallibrary.wordpress.com/',
+                    city : 'Canaan',
+                    type : library
+                },
+                {
+                    library : 'Chittenden Public',
+                    county : 'Rutland',
+                    position : {lat: 43.70065335200047, lng:-72.95141306699963},
+                    web_address : '"http://cplibrary.home.comcast.net/cplibrary/"',
+                    city : 'Chittenden',
+                    type : library
+                },
+                {
+                    library : 'Joslin Memorial ',
+                    county : 'Washington',
+                    position : {lat: 44.19031787400047, lng:-72.82419800399964},
+                    web_address : 'www.joslinmemoriallibrary.com',
+                    city : 'Waitsfield',
+                    type : library
+                },
+                {
+                    library : 'George Peabody',
+                    county : 'Orange',
+                    position : {lat: 43.88537623600047, lng:-72.26091769099963},
+                    web_address : 'thetfordlibraries.org',
+                    city : 'Post Mills',
+                    type : library
+                },
+                {
+                    library : 'Belcher Memorial',
+                    county : 'Windsor',
+                    position : {lat: 43.71022027300046, lng:-72.75460689199963},
+                    web_address : 'N/A',
+                    city : 'Gaysville',
+                    type : library
+                },
+                {
+                    library : 'S.L. Griffith Memorial Library',
+                    county : 'Rutland',
+                    position : {lat: 43.34579240400046, lng:-72.99584026899964},
+                    web_address : 'N/R',
+                    city : 'Danby',
+                    type : library
+                },
+                {
+                    library : 'Benson Public',
+                    county : 'Rutland',
+                    position : {lat: 43.7083662280005, lng:-73.31029271699964},
+                    web_address : 'N/R',
+                    city : 'Benson',
+                    type : library
+                },
+                {
+                    library : 'St. Albans Free',
+                    county : 'Franklin',
+                    position : {lat: 44.812905129000455,lng: -73.08188288599968},
+                    web_address : 'http://www.stalbansfreelibrary.org/',
+                    city : 'St. Albans',
+                    type : library
+                },
+                {
+                    library : 'Roger Clark Memorial',
+                    county : 'Rutland',
+                    position : {lat: 43.770615241000485,lng: -72.81253867699962},
+                    web_address : 'http://pittsfieldlibrary.com',
+                    city : 'Pittsfield',
+                    type : library
+                },
+                {
+                    library : 'Kellogg Hubbard',
+                    county : 'Washington',
+                    position : {lat: 44.261425087000475,lng: -72.57392397399963},
+                    web_address : 'Kellogghubbard.org',
+                    city : 'Montpelier',
+                    type : library
+                },
+                {
+                    library : 'Brandon Free Public',
+                    county : 'Rutland',
+                    position : {lat: 43.79797350700045, lng:-73.08604463199964},
+                    web_address : 'www.brandonpubliclibrary.org',
+                    city : 'Brandon',
+                    type : library
+                },
+                {
+                    library : 'Westminster West Public',
+                    county : 'Windham',
+                    position : {lat: 43.06482203100046, lng:-72.54126743299963},
+                    web_address : 'westwestlibrary.org',
+                    city : 'Westminster West',
+                    type : library
+                },
+                {
+                    library : 'Dorset Village Public',
+                    county : 'Bennington',
+                    position : {lat: 43.21269003000049, lng:-73.06728983499966},
+                    web_address : 'http://www.dorsetlibraryinfo.org',
+                    city : 'Dorset',
+                    type : library
+                },
+                {
+                    library : 'Sherburne Memorial',
+                    county : 'Rutland',
+                    position : {lat: 43.67164953100047, lng:-72.77635733399967},
+                    web_address : 'wwwhttp://sherlib.wordpress.com',
+                    city : 'Killington',
+                    type : library
+                },
+                {
+                    library : 'Shrewsbury',
+                    county : 'Rutland',
+                    position : {lat: 43.48944114900047, lng:-72.88091227299964},
+                    web_address : 'Shrewsburylibrary.org',
+                    city : 'Shrewsbury',
+                    type : library
+                },
+                {
+                    library : 'Castleton Free',
+                    county : 'Rutland',
+                    position : {lat: 43.611646159000486,lng: -73.17829737799963},
+                    web_address : 'castletonfreelibrary.org',
+                    city : 'Castleton',
+                    type : library
+                },
+                {
+                    library : 'Readsboro Community',
+                    county : 'Bennington',
+                    position : {lat: 42.771405882000465,lng: -72.94067284099964},
+                    web_address : 'www.readsborocommunitylibrary.wordpress.com',
+                    city : 'Readsboro',
+                    type : library
+                },
+                {
+                    library : 'Starksboro Public',
+                    county : 'Addison',
+                    position : {lat: 44.22521294900048, lng:-73.05698778199962},
+                    web_address : 'starksborolibrary.wordpress.com',
+                    city : 'Starksboro',
+                    type : library
+                },
+                {
+                    library : 'Warren Public',
+                    county : 'Washington',
+                    position : {lat: 44.11277813400045, lng:-72.85596623799967},
+                    web_address : 'http://www.warrenlibrary.com/warren/',
+                    city : 'Warren',
+                    type : library
+                },
+                {
+                    library : 'Vershire Community',
+                    county : 'Orange',
+                    position : {lat: 43.962660395000455,lng: -72.29188706199966},
+                    web_address : 'N/R',
+                    city : 'Vershire',
+                    type : library
+                },
+                {
+                    library : 'Maclure ',
+                    county : 'Rutland',
+                    position : {lat: 43.7060767640005, lng:-73.02697365899962},
+                    web_address : 'www.maclurelibrary.org',
+                    city : 'Pittsford',
+                    type : library
+                },
+                {
+                    library : 'Bethel Public',
+                    county : 'Windsor',
+                    position : {lat: 43.82977294500046, lng:-72.63184041699964},
+                    web_address : 'N/R',
+                    city : 'Bethel',
+                    type : library
+                },
+                {
+                    library : 'Cutler Memorial',
+                    county : 'Washington',
+                    position : {lat: 44.27784218800048, lng:-72.42868575199964},
+                    web_address : 'www.cutlerlibrary.org',
+                    city : 'Plainfield',
+                    type : library
+                },
+                {
+                    library : 'Westford Public',
+                    county : 'Chittenden',
+                    position : {lat: 44.612026899000455,lng: -73.01137972299966},
+                    web_address : 'http://westfordpubliclibrary.org',
+                    city : 'Westford',
+                    type : library
+                },
+                {
+                    library : 'Baxter Memorial',
+                    county : 'Windsor',
+                    position : {lat: 43.78379653500048, lng:-72.45619366299962},
+                    web_address : 'none',
+                    city : 'Sharon',
+                    type : library
+                },
+                {
+                    library : 'Wardsboro Free Public',
+                    county : 'Windham',
+                    position : {lat: 43.043105881000486,lng: -72.79006450599962},
+                    web_address : 'wardsboropubliclibrary.org',
+                    city : 'Wardsboro',
+                    type : library
+                },
+                {
+                    library : 'H. F. Brigham Free',
+                    county : 'Franklin',
+                    position : {lat: 44.78354006300049, lng:-72.80112452199967},
+                    web_address : 'hfbrigham.wordpress.com',
+                    city : 'Bakersfield',
+                    type : library
+                },
+                {
+                    library : 'Salisbury Free Public',
+                    county : 'Addison',
+                    position : {lat: 43.8964232240005, lng:-73.10161988699963},
+                    web_address : 'http://salisburypubliclibrary.wordpress.com/',
+                    city : 'Salisbury',
+                    type : library
+                },
+                {
+                    library : 'Platt Memorial',
+                    county : 'Addison',
+                    position : {lat: 43.89379146600049, lng:-73.31458738599963},
+                    web_address : 'www.plattlib.org',
+                    city : 'Shoreham',
+                    type : library
+                },
+                {
+                    library : 'Barton Public',
+                    county : 'Orleans',
+                    position : {lat: 44.749586594000505,lng: -72.18042758599967},
+                    web_address : 'bartonpubliclibrary.org',
+                    city : 'Barton',
+                    type : library
+                },
+                {
+                    library : 'Burnham Memorial',
+                    county : 'Chittenden',
+                    position : {lat: 44.544279359000484,lng: -73.14939293799966},
+                    web_address : 'www.colchestervt.gov/Library',
+                    city : 'Colchester',
+                    type : library
+                },
+                {
+                    library : 'Huntington Public',
+                    county : 'Chittenden',
+                    position : {lat: 44.32665289100049, lng:-72.98768087199966},
+                    web_address : 'huntingtonpubliclibrary.org',
+                    city : 'Huntington',
+                    type : library
+                },
+                {
+                    library : 'Norwich Public',
+                    county : 'Windsor',
+                    position : {lat: 43.71679803900048, lng:-72.30889456899968},
+                    web_address : 'www.norwichlibrary.org',
+                    city : 'Norwich',
+                    type : library
+                },
+                {
+                    library : 'Greensboro Free',
+                    county : 'Orleans',
+                    position : {lat: 44.57677057900048, lng:-72.29600937699962},
+                    web_address : 'http://www.greensborofreelibrary.org/',
+                    city : 'Greensboro',
+                    type : library
+                },
+                {
+                    library : 'Moretown Memorial',
+                    county : 'Washington',
+                    position : {lat: 44.24749287800046, lng:-72.76390918899966},
+                    web_address : 'http://www.moretownvt.org/moretown-library/',
+                    city : 'Moretown',
+                    type : library
+                },
+                {
+                    library : 'Morrill Mem. & Harris',
+                    county : 'Orange',
+                    position : {lat: 43.8779418310005, lng:-72.38246586099967},
+                    web_address : 'www.straffordlibrary.org',
+                    city : 'Strafford',
+                    type : library
+                },
+                {
+                    library : 'Haston',
+                    county : 'Franklin',
+                    position : {lat: 44.9815840010005, lng:-72.91561191899967},
+                    web_address : 'hastonlibrary.org',
+                    city : 'Franklin',
+                    type : library
+                },
+                {
+                    library : 'Fletcher Free',
+                    county : 'Chittenden',
+                    position : {lat: 44.47717239500048, lng:-73.21010824999968},
+                    web_address : 'www.fletcherfree.org',
+                    city : 'Burlington',
+                    type : library
+                },
+                {
+                    library : 'Essex Free',
+                    county : 'Chittenden',
+                    position : {lat: 44.51200232700046, lng:-73.05870399099967},
+                    web_address : 'www.essex.org',
+                    city : 'Essex',
+                    type : library
+                },
+                {
+                    library : 'Tyson',
+                    county : 'Windsor',
+                    position : {lat: 43.44095971200045, lng:-72.69905802799963},
+                    web_address : 'N/A',
+                    city : 'Ludlow',
+                    type : library
+                },
+                {
+                    library : 'Mary L. Blood Memorial',
+                    county : 'Windsor',
+                    position : {lat: 43.4684039710005, lng:-72.47126365999964},
+                    web_address : 'marybloodlibrary.wordpress.com',
+                    city : 'Brownsville',
+                    type : library
+                },
+                {
+                    library : 'Stamford Community',
+                    county : 'Bennington',
+                    position : {lat: 42.75501010000045, lng:-73.06813544499965},
+                    web_address : 'stamfordlibrary.org',
+                    city : 'Stamford',
+                    type : library
+                },
+                {
+                    library : 'Wilder Memorial',
+                    county : 'Windsor',
+                    position : {lat: 43.291561844000455,lng: -72.79469436199963},
+                    web_address : 'N/A',
+                    city : 'Weston',
+                    type : library
+                },
+                {
+                    library : 'Blake Memorial',
+                    county : 'Orange',
+                    position : {lat: 44.0637921390005, lng:-72.22211406399964},
+                    web_address : 'www.blakememorial.org',
+                    city : 'E. Corinth',
+                    type : library
+                },
+                {
+                    library : 'Alden Balch Memorial',
+                    county : 'Essex',
+                    position : {lat: 44.46322241900049, lng:-71.68156849199966},
+                    web_address : 'N/A',
+                    city : 'Lunenburg',
+                    type : library
+                },
+                {
+                    library : 'Walden Community',
+                    county : 'Caledonia',
+                    position : {lat: 44.452547336000464,lng: -72.21932004199965},
+                    web_address : 'N/A',
+                    city : 'West Danville',
+                    type : library
+                },
+                {
+                    library : 'Cobleigh Public',
+                    county : 'Caledonia',
+                    position : {lat: 44.53516227200049, lng:-72.00477846399963},
+                    web_address : 'www.cobleighlibrary.org',
+                    city : 'Lyndonville',
+                    type : library
+                },
+                {
+                    library : 'Quechee ',
+                    county : 'Windsor',
+                    position : {lat: 43.6483142940005, lng:-72.42154494699963},
+                    web_address : 'www.quecheelibrary.org',
+                    city : 'Quechee',
+                    type : library
+                },
+                {
+                    library : 'Latham Memorial',
+                    county : 'Orange',
+                    position : {lat: 43.82050085800046, lng:-72.23245888999963},
+                    web_address : 'thetfordlibraries.org',
+                    city : 'Thetford',
+                    type : library
+                },
+                {
+                    library : 'Bixby Memorial',
+                    county : 'Addison',
+                    position : {lat: 44.16723610100047, lng:-73.25358081799965},
+                    web_address : 'http://bixbylibrary.org',
+                    city : 'Vergennes',
+                    type : library
+                },
+                {
+                    library : 'Orwell Free Library',
+                    county : 'Addison',
+                    position : {lat: 43.80359157200047, lng:-73.29991847399964},
+                    web_address : 'www.orwellfreelibrary.wordpress.com',
+                    city : 'Orwell Vt',
+                    type : library
+                },
+                {
+                    library : 'Lowell Community',
+                    county : 'Orleans',
+                    position : {lat: 44.728276363000475,lng: -72.49863663099967},
+                    web_address : 'N/R',
+                    city : 'Lowell',
+                    type : library
+                },
+                {
+                    library : 'New Haven Community',
+                    county : 'Addison',
+                    position : {lat: 44.125977194000484,lng: -73.15384405799966},
+                    web_address : 'nhcl.org',
+                    city : 'New Haven',
+                    type : library
+                },
+                {
+                    library : 'Pawlet Public',
+                    county : 'Rutland',
+                    position : {lat: 43.345482089000484,lng: -73.17928991299965},
+                    web_address : 'N/A',
+                    city : 'Pawlet',
+                    type : library
+                },
+                {
+                    library : 'Davies Memorial',
+                    county : 'Caledonia',
+                    position : {lat: 44.35440209900048, lng:-71.90749592899965},
+                    web_address : 'daviesmemoriallibrary.org',
+                    city : 'Lower Waterford',
+                    type : library
+                },
+                {
+                    library : 'Proctor Free',
+                    county : 'Rutland',
+                    position : {lat: 43.66127631000046, lng:-73.03294305699967},
+                    web_address : 'N/A',
+                    city : 'Proctor',
+                    type : library
+                },
+                {
+                    library : 'Glover Public',
+                    county : 'Orleans',
+                    position : {lat: 44.70721197300048, lng:-72.18799833199967},
+                    web_address : 'gloverlibrary.org',
+                    city : 'Glover',
+                    type : library
+                },
+                {
+                    library : 'Bennington Free',
+                    county : 'Bennington',
+                    position : {lat: 42.87796545200047, lng:-73.19378802399967},
+                    web_address : 'benningtonfreelibrary.org',
+                    city : 'Bennington',
+                    type : library
+                },
+                {
+                    library : 'Butterfield',
+                    county : 'Windham',
+                    position : {lat: 43.06745615800048, lng:-72.45894978499967},
+                    web_address : 'N/A',
+                    city : 'Westminster',
+                    type : library
+                },
+                {
+                    library : 'Hancock Free Public',
+                    county : 'Addison',
+                    position : {lat: 43.92635411000049, lng:-72.84226898199967},
+                    web_address : 'N/A',
+                    city : 'Hancock',
+                    type : library
+                },
+                {
+                    library : 'Barnet Public',
+                    county : 'Caledonia',
+                    position : {lat: 44.296372276000454,lng: -72.05279324299966},
+                    web_address : 'N/A',
+                    city : 'Barnet',
+                    type : library
+                },
+                {
+                    library : 'Wm. & Lucy Rand Memorial',
+                    county : 'Orleans',
+                    position : {lat: 44.997386393000454,lng: -72.40538249399964},
+                    web_address : 'www.randmemoriallibrary.org',
+                    city : 'North Troy',
+                    type : library
+                },
+                {
+                    library : 'Albany Town',
+                    county : 'Orleans',
+                    position : {lat: 44.73502558500047, lng:-72.37861220299965},
+                    web_address : 'N/A',
+                    city : 'Albany',
+                    type : library
+                },
+                {
+                    library : 'Windham Town ',
+                    county : 'Windham',
+                    position : {lat: 43.18042395700047, lng:-72.72591451499966},
+                    web_address : 'windhamtownlibrary.com',
+                    city : 'Windham',
+                    type : library
+                },
+                {
+                    library : 'Fairlee Public',
+                    county : 'Orange',
+                    position : {lat: 43.90597548700049, lng:-72.14603351599965},
+                    web_address : 'www.fairleelibrary.com',
+                    city : 'Fairlee',
+                    type : library
+                },
+                {
+                    library : 'Craftsbury Public',
+                    county : 'Orleans',
+                    position : {lat: 44.6693889280005, lng:-72.36178797899964},
+                    web_address : 'www.craftsburypubliclibrary.org',
+                    city : 'Craftsbury Common',
+                    type : library
+                },
+                {
+                    library : 'Woodbury Community',
+                    county : 'Washington',
+                    position : {lat: 44.440652033000504,lng: -72.41624347899966},
+                    web_address : 'N/A',
+                    city : 'Woodbury',
+                    type : library
+                },
+                {
+                    library : 'Cornwall Free Public',
+                    county : 'Addison',
+                    position : {lat: 43.96130281100045, lng:-73.20959303199965},
+                    web_address : 'cornwallvt.com',
+                    city : 'Cornwall',
+                    type : library
+                },
+                {
+                    library : 'West Fairlee Free Public',
+                    county : 'Orange',
+                    position : {lat: 43.901970072000495,lng: -72.26327786799965},
+                    web_address : 'http://westfairleelibrary.wordpress.com',
+                    city : 'West Fairlee',
+                    type : library
+                },
+                {
+                    library : 'Peacham',
+                    county : 'Caledonia',
+                    position : {lat: 44.32886892100049, lng:-72.17048328299967},
+                    web_address : 'peachamlibrary.org',
+                    city : 'Peacham',
+                    type : library
+                },
+                {
+                    library : 'West Burke',
+                    county : 'Caledonia',
+                    position : {lat: 44.664396516000465,lng: -71.95556906999963},
+                    web_address : 'N/R',
+                    city : 'West Burke',
+                    type : library
+                },
+                {
+                    library : 'Middletown Springs Public',
+                    county : 'Rutland',
+                    position : {lat: 43.485301637000475,lng: -73.12214096699967},
+                    web_address : 'http://middletownsprings.wordpress.com',
+                    city : 'Middletown Spgs.',
+                    type : library
+                },
+                {
+                    library : 'Tinmouth',
+                    county : 'Rutland',
+                    position : {lat: 43.44820356200046, lng:-73.05046405399963},
+                    web_address : 'N/R',
+                    city : 'Tinmouth',
+                    type : library
+                },
+                {
+                    library : 'Highgate Public',
+                    county : 'Franklin',
+                    position : {lat: 44.938315151000495,lng: -73.04484284599965},
+                    web_address : 'www.highgatelibrary.wordpress.com',
+                    city : 'Highgate',
+                    type : library
+                },
+                {
+                    library : 'Whiting',
+                    county : 'Windsor',
+                    position : {lat: 43.26384310700047, lng:-72.59709102499966},
+                    web_address : 'http://chester.govoffice.com ',
+                    city : 'Chester',
+                    type : library
+                },
+                {
+                    library : 'St. Johnsbury Athenaeum',
+                    county : 'Caledonia',
+                    position : {lat: 44.41843397200046, lng:-72.02094802299968},
+                    web_address : 'www.stjathenaeum.org',
+                    city : 'St. Johnsbury',
+                    type : library
+                },
+                {
+                    library : 'Roxbury Free',
+                    county : 'Washington',
+                    position : {lat: 44.093448570000476,lng: -72.73309558999966},
+                    web_address : 'http://www.facebook.com/pages/Roxbury-Free-Library/225492285010',
+                    city : 'Roxbury',
+                    type : library
+                },
+                {
+                    library : 'Winooski Memorial',
+                    county : 'Chittenden',
+                    position : {lat: 44.48975556200048, lng:-73.18648283199963},
+                    web_address : 'winooskilibrary.wordpress.com',
+                    city : 'Winooski',
+                    type : library
+                },
+                {
+                    library : 'Island Pond Public',
+                    county : 'Essex',
+                    position : {lat: 44.81476465200046, lng:-71.87976758799965},
+                    web_address : 'http://islandpondpubliclibrary.wordpress.com/',
+                    city : 'Island Pond',
+                    type : library
+                },
+                {
+                    library : 'Guilford Free',
+                    county : 'Windham',
+                    position : {lat: 42.79226096500048, lng:-72.62429809699967},
+                    web_address : '"http://homepages.sover.net/wilken/guilfordlibrary/"',
+                    city : 'Guilford',
+                    type : library
+                },
+                {
+                    library : 'Wells Village',
+                    county : 'Rutland',
+                    position : {lat: 43.41703700800048, lng:-73.20296625999964},
+                    web_address : 'wellslibrary.com',
+                    city : 'Wells',
+                    type : library
+                },
+                {
+                    library : 'Calef Memorial',
+                    county : 'Orange',
+                    position : {lat: 44.10766740700046, lng:-72.43335469399966},
+                    web_address : 'www.caleflibrary.wordpress.com',
+                    city : 'Washington',
+                    type : library
+                },
+                {
+                    library : 'Winhall Memorial',
+                    county : 'Bennington',
+                    position : {lat: 43.16947130500046, lng:-72.91855698399962},
+                    web_address : 'www.winhalllibrary.net ',
+                    city : 'Bondville',
+                    type : library
+                },
+                {
+                    library : 'Carpenter Carse',
+                    county : 'Chittenden',
+                    position : {lat: 44.34174582100047, lng:-73.11817437999963},
+                    web_address : 'www.carpentercarse.org',
+                    city : 'Hinesburg',
+                    type : library
+                },
+                {
+                    library : 'Reading Public',
+                    county : 'Windsor',
+                    position : {lat: 43.454386179000494,lng: -72.53733756199966},
+                    web_address : 'www.readinglibrary.org',
+                    city : 'Reading',
+                    type : library
+                },
+                {
+                    library : 'Martha Canfield Memorial',
+                    county : 'Bennington',
+                    position : {lat: 43.06519393600047, lng:-73.15227116199964},
+                    web_address : 'marthacanfieldlibrary.org',
+                    city : 'Arlington',
+                    type : library
+                },
+                {
+                    library : 'Waterbury Public',
+                    county : 'Washington',
+                    position : {lat: 44.33993841200049, lng:-72.75842418899964},
+                    web_address : 'www.waterburypubliclibrary.com',
+                    city : 'Waterbury',
+                    type : library
+                },
+                {
+                    library : 'Moore Free',
+                    county : 'Windham',
+                    position : {lat: 42.98670903600049, lng:-72.65659576099966},
+                    web_address : 'moorefreelibrary.org',
+                    city : 'Newfane',
+                    type : library
+                },
+                {
+                    library : 'Hartland Public',
+                    county : 'Windsor',
+                    position : {lat: 43.539334684000494,lng: -72.39971979999967},
+                    web_address : 'www.HartlandLibraryVT.org',
+                    city : 'Hartland',
+                    type : library
+                },
+                {
+                    library : 'Brown Public',
+                    county : 'Washington',
+                    position : {lat: 44.147486072000504,lng: -72.65631268699963},
+                    web_address : 'www.brownpubliclibrary.org ',
+                    city : 'Northfield',
+                    type : library
+                },
+                {
+                    library : 'Fletcher Memorial',
+                    county : 'Windsor',
+                    position : {lat: 43.39680255500048, lng:-72.69482376399964},
+                    web_address : 'www.fmlnew.org',
+                    city : 'Ludlow',
+                    type : library
+                },
+                {
+                    library : 'Charlotte',
+                    county : 'Chittenden',
+                    position : {lat: 44.311042372000486,lng: -73.24942709399966},
+                    web_address : 'www.charlottepubliclibrary.org',
+                    city : 'Charlotte',
+                    type : library
+                },
+                {
+                    library : 'Groton Free Public',
+                    county : 'Caledonia',
+                    position : {lat: 44.210139375000495,lng: -72.19386319399968},
+                    web_address : 'http://grotonlibraryvt.org',
+                    city : 'Groton',
+                    type : library
+                },
+                {
+                    library : 'Lanpher Memorial',
+                    county : 'Lamoille',
+                    position : {lat: 44.59356550700045, lng:-72.61716913599963},
+                    web_address : 'lanpherlibrary.org',
+                    city : 'Hyde Park',
+                    type : library
+                },
+                {
+                    library : 'Jamaica Memorial',
+                    county : 'Windham',
+                    position : {lat: 43.1002868060005, lng:-72.77831990099963},
+                    web_address : 'www.jamaicavtlibrary.org',
+                    city : 'Jamaica',
+                    type : library
+                },
+                {
+                    library : 'South Londonderry Free',
+                    county : 'Windham',
+                    position : {lat: 43.19087902500047, lng:-72.81245120499966},
+                    web_address : 'londonderryvt.org',
+                    city : 'S. Londonderry',
+                    type : library
+                },
+                {
+                    library : 'Bailey Memorial',
+                    county : 'Rutland',
+                    position : {lat: 43.56473169600048, lng:-72.96807770899966},
+                    web_address : 'baileylibraryvt.wordpress.com',
+                    city : 'N. Clarendon',
+                    type : library
+                },
+                {
+                    library : 'Lawrence Memorial',
+                    county : 'Addison',
+                    position : {lat: 44.13574146700046, lng:-73.07876196699965},
+                    web_address : 'www.lawrencelibrary.net',
+                    city : 'Bristol',
+                    type : library
+                },
+                {
+                    library : 'Gilbert Hart',
+                    county : 'Rutland',
+                    position : {lat: 43.471494976000486,lng: -72.97728767799964},
+                    web_address : 'ghlib.wordpress.com',
+                    city : 'Wallingford',
+                    type : library
+                },
+                {
+                    library : 'Hartford',
+                    county : 'Windsor',
+                    position : {lat: 43.661307267000495,lng: -72.34256022599965},
+                    web_address : 'Hartford@vals.state.vt.us',
+                    city : 'Hartford',
+                    type : library
+                },
+                {
+                    library : 'Bradford Public',
+                    county : 'Orange',
+                    position : {lat: 43.992989320000504,lng: -72.12854333999962},
+                    web_address : 'http://bradfordvtlibrary.org/',
+                    city : 'Bradford',
+                    type : library
+                },
+                {
+                    library : 'Arvin A. Brown Public',
+                    county : 'Franklin',
+                    position : {lat: 44.9950316230005, lng:-72.67298973899966},
+                    web_address : 'www.aabrown.org',
+                    city : 'Richford',
+                    type : library
+                },
+                {
+                    library : 'Enosburgh Public',
+                    county : 'Franklin',
+                    position : {lat: 44.90595471300048, lng:-72.80579228099964},
+                    web_address : 'http://www.enosburghlibrary.org',
+                    city : 'Enosburg Falls',
+                    type : library
+                },
+                {
+                    library : 'Mount Holly Town',
+                    county : 'Rutland',
+                    position : {lat: 43.414459733000456,lng: -72.82121803099966},
+                    web_address : 'www.mounthollyvt.org',
+                    city : 'Belmont',
+                    type : library
+                },
+                {
+                    library : 'Kimball Public',
+                    county : 'Orange',
+                    position : {lat: 43.9251214680005, lng:-72.66570623999962},
+                    web_address : 'www.KimballLibrary.org',
+                    city : 'Randolph',
+                    type : library
+                },
+                {
+                    library : 'Springfield Town',
+                    county : 'Windsor',
+                    position : {lat: 43.298186246000455,lng: -72.48198773499962},
+                    web_address : 'www.springfieldtownlibrary.org',
+                    city : 'Springfield',
+                    type : library
+                },
+                {
+                    library : 'Morristown Centennial',
+                    county : 'Lamoille',
+                    position : {lat: 44.56213364600046, lng:-72.59542811399967},
+                    web_address : 'www.centenniallibrary.org',
+                    city : 'Morrisville',
+                    type : library
+                },
+                {
+                    library : 'Rochester Public',
+                    county : 'Windsor',
+                    position : {lat: 43.87413500500048, lng:-72.80829849099968},
+                    web_address : 'www.rochestervtpubliclibrary.com',
+                    city : 'Rochester',
+                    type : library
+                },
+                {
+                    library : 'Grand Isle Free',
+                    county : 'Grand Isle',
+                    position : {lat: 44.72235701800048, lng:-73.29513345899966},
+                    web_address : 'grandislefreelibraryvt.wordpress.com',
+                    city : 'Grand Isle',
+                    type : library
+                },
+                {
+                    library : 'Jeudevine Memorial',
+                    county : 'Caledonia',
+                    position : {lat: 44.5056811340005, lng:-72.36523337799963},
+                    web_address : 'www.jeudevinememoriallibrary.org',
+                    city : 'Hardwick',
+                    type : library
+                },
+                {
+                    library : 'Cabot Public',
+                    county : 'Washington',
+                    position : {lat: 44.40232718600049, lng:-72.31120890499966},
+                    web_address : 'https://sites.google.com/site/cabotpubliclibrary/',
+                    city : 'Cabot',
+                    type : library
+                },
+                {
+                    library : 'Brookfield Free Public',
+                    county : 'Orange',
+                    position : {lat: 44.04322723600046, lng:-72.60283777999967},
+                    web_address : 'www.brookfieldvt/library',
+                    city : 'Brookfield',
+                    type : library
+                },
+                {
+                    library : 'Baldwin Memorial',
+                    county : 'Orange',
+                    position : {lat: 44.15351353300048, lng:-72.04688185399965},
+                    web_address : 'N/A',
+                    city : 'Wells River',
+                    type : library
+                },
+                {
+                    library : 'Solomon Wright Public',
+                    county : 'Bennington',
+                    position : {lat: 42.767531678000466,lng: -73.24097751599965},
+                    web_address : 'www.solomonwrightlibrary.org',
+                    city : 'Pownal',
+                    type : library
+                },
+                {
+                    library : 'Johnson Public',
+                    county : 'Lamoille',
+                    position : {lat: 44.63468346900049, lng:-72.68199068699965},
+                    web_address : 'johnsonpubliclibrary.wordpress.com/',
+                    city : 'Johnson',
+                    type : library
+                },
+                {
+                    library : 'Mark Skinner',
+                    county : 'Bennington',
+                    position : {lat: 43.16422834100047, lng:-73.07200254199967},
+                    web_address : 'www.markskinnerlibrary.org',
+                    city : 'Manchester',
+                    type : library
+                },
+                {
+                    library : 'Putney Public',
+                    county : 'Windham',
+                    position : {lat: 42.96954338800049, lng:-72.52244834999965},
+                    web_address : 'http://home.svcable.net/putpub',
+                    city : 'Putney',
+                    type : library
+                },
+                {
+                    library : 'Bent Northrup Memorial',
+                    county : 'Franklin',
+                    position : {lat: 44.79975226100049, lng:-72.94683650899964},
+                    web_address : 'www.bentnorthrop.org',
+                    city : 'Fairfield',
+                    type : library
+                },
+                {
+                    library : 'Abbott Memorial',
+                    county : 'Windsor',
+                    position : {lat: 43.66499196500047, lng:-72.53911417699965},
+                    web_address : 'abbottmemoriallibrary.org',
+                    city : 'S. Pomfret',
+                    type : library
+                },
+                {
+                    library : 'Brainerd Memorial',
+                    county : 'Caledonia',
+                    position : {lat: 44.430848126000456,lng: -72.11799841099963},
+                    web_address : 'N/R',
+                    city : 'N. Danville',
+                    type : library
+                },
+                {
+                    library : 'Jericho Town',
+                    county : 'Chittenden',
+                    position : {lat: 44.4811980500005, lng:-72.96377980199964},
+                    web_address : 'http://www.jerichotownlibrary.org',
+                    city : 'Jericho Center',
+                    type : library
+                },
+                {
+                    library : 'Alburg Public',
+                    county : 'Grand Isle',
+                    position : {lat: 44.975146735000465,lng: -73.30097022899963},
+                    web_address : 'alburghpl.com',
+                    city : 'Alburg',
+                    type : library
+                },
+                {
+                    library : 'Brownell',
+                    county : 'Chittenden',
+                    position : {lat: 44.49101694600046, lng:-73.11098713499968},
+                    web_address : 'www.brownelllibrary.org',
+                    city : 'Essex Junction',
+                    type : library
+                },
+                {
+                    library : 'Dover Free',
+                    county : 'Windham',
+                    position : {lat: 42.94451681400045, lng:-72.80310722299964},
+                    web_address : 'www.doverfreelibrary1913.org',
+                    city : 'East Dover',
+                    type : library
+                },
+                {
+                    library : 'Pierson',
+                    county : 'Chittenden',
+                    position : {lat: 44.37942189000046, lng:-73.22804494799965},
+                    web_address : 'www.PiersonLibrary.org',
+                    city : 'Shelburne',
+                    type : library
+                },
+                {
+                    library : 'North Hero Public',
+                    county : 'Grand Isle',
+                    position : {lat: 44.81178112500049, lng:-73.29217954099965},
+                    web_address : 'northherovt.com/library.php',
+                    city : 'North Hero',
+                    type : library
+                },
+                {
+                    library : 'Georgia Public',
+                    county : 'Franklin',
+                    position : {lat: 44.695007080000494,lng: -73.03241785299963},
+                    web_address : 'www.georgia.lib.vt.us',
+                    city : 'Fairfax',
+                    type : library
+                },
+                {
+                    library : 'Royalton Memorial',
+                    county : 'Windsor',
+                    position : {lat: 43.81810414200049, lng:-72.51966380299967},
+                    web_address : 'www.royaltonlibrary.org',
+                    city : 'South Royalton',
+                    type : library
+                },
+                {
+                    library : 'Rockingham Free Public',
+                    county : 'Windham',
+                    position : {lat: 43.130832729000474,lng: -72.44429745399964},
+                    web_address : 'www.rockinghamlibrary.org',
+                    city : 'Bellows Falls',
+                    type : library
+                },
+                {
+                    library : 'Pope Memorial',
+                    county : 'Caledonia',
+                    position : {lat: 44.41112379600048, lng:-72.14071788599966},
+                    web_address : 'popememoriallibrary.org',
+                    city : 'Danville',
+                    type : library
+                },
+                {
+                    library : 'Whitingham Free Public',
+                    county : 'Windham',
+                    position : {lat: 42.79867809600046, lng:-72.82274473399963},
+                    web_address : 'www.readwithus.org',
+                    city : 'Jacksonville',
+                    type : library
+                },
+                {
+                    library : 'Deborah Rawson Memorial',
+                    county : 'Chittenden',
+                    position : {lat: 44.51866699900046, lng:-72.94696916199968},
+                    web_address : 'www.drml.org',
+                    city : 'Jericho',
+                    type : library
+                },
+                {
+                    library : 'Waterville Town',
+                    county : 'Lamoille',
+                    position : {lat: 44.69390750600047, lng:-72.76637199899966},
+                    web_address : 'N/R',
+                    city : 'Waterville',
+                    type : library
+                },
+                {
+                    library : 'South Hero Community',
+                    county : 'Grand Isle',
+                    position : {lat: 44.63630018800046, lng:-73.30256207599967},
+                    web_address : 'www.southherocommunitylibrary.blogspot.com',
+                    city : 'South Hero',
+                    type : library
+                },
+                {
+                    library : 'Dorothy Alling Memorial',
+                    county : 'Chittenden',
+                    position : {lat: 44.43904506700045, lng:-73.07409183999965},
+                    web_address : 'www.williston.lib.vt.us',
+                    city : 'Williston',
+                    type : library
+                },
+                {
+                    library : 'Jaquith Public',
+                    county : 'Washington',
+                    position : {lat: 44.34900151500045, lng:-72.35406558099965},
+                    web_address : 'www.marshfield.lib.vt.us',
+                    city : 'Marshfield',
+                    type : library
+                },
+                {
+                    library : 'Montgomery Town',
+                    county : 'Franklin',
+                    position : {lat: 44.87860432800045, lng:-72.60734208999963},
+                    web_address : 'http://www.montgomeryvt.us/library.htm ',
+                    city : 'Montgomery Center',
+                    type : library
+                },
+                {
+                    library : 'Fair Haven Free',
+                    county : 'Rutland',
+                    position : {lat: 43.594225768000456,lng: -73.26550410299967},
+                    web_address : 'fairhavenfree.org',
+                    city : 'Fair Haven',
+                    type : library
+                },
+                {
+                    library : 'Dailey Memorial',
+                    county : 'Orleans',
+                    position : {lat: 44.94895233300048, lng:-72.13224817399964},
+                    web_address : 'daileymemoriallibrary.org',
+                    city : 'Derby',
+                    type : library
+                },
+                {
+                    library : 'Vernon Free',
+                    county : 'Windham',
+                    position : {lat: 42.780165774000466,lng: -72.52158846799966},
+                    web_address : 'http://vernonfreelibrary.org',
+                    city : 'Vernon',
+                    type : library
+                },
+                {
+                    library : 'Swanton Public',
+                    county : 'Franklin',
+                    position : {lat: 44.918319864000466,lng: -73.12434535199964},
+                    web_address : 'http://swantonlibrary.org',
+                    city : 'Swanton',
+                    type : library
+                },
+                {
+                    library : 'Lincoln',
+                    county : 'Addison',
+                    position : {lat: 44.10821697300048, lng:-72.99996083099967},
+                    web_address : 'www.lincolnlibraryvt.com',
+                    city : 'Lincoln',
+                    type : library
+                },
+                {
+                    library : 'Weathersfield Proctor',
+                    county : 'Windsor',
+                    position : {lat: 43.407071386000496,lng: -72.40751324699966},
+                    web_address : 'http://weathersfieldproctorlibrary.org',
+                    city : 'Ascutney',
+                    type : library
+                },
+                {
+                    library : 'Haskell Free',
+                    county : 'Orleans',
+                    position : {lat: 45.00556711000047, lng:-72.09766222999963},
+                    web_address : 'http://haskellopera.com',
+                    city : 'Derby Line',
+                    type : library
+                },
+                {
+                    library : 'Ilsley Public',
+                    county : 'Addison',
+                    position : {lat: 44.01248233300049, lng:-73.16929112699967},
+                    web_address : 'www.ilsleypubliclibrary.org',
+                    city : 'Middlebury',
+                    type : library
+                },
+                {
+                    library : 'R.K. Kittay Public',
+                    county : 'Bennington',
+                    position : {lat: 43.258653024000466,lng: -73.22454857099967},
+                    web_address : 'rupertkittaylibrary.org',
+                    city : 'W. Rupert',
+                    type : library
+                },
+                {
+                    library : 'Lydia Taft Pratt',
+                    county : 'Windham',
+                    position : {lat: 42.92804654200046, lng:-72.61341863499968},
+                    web_address : 'dummerstonpl@vals.state.vt.us',
+                    city : 'West Dummerston',
+                    type : library
+                },
+                {
+                    library : 'Grafton Public',
+                    county : 'Windham',
+                    position : {lat: 43.17187370400046, lng:-72.60714429299964},
+                    web_address : 'www.graftonpubliclibrary.org',
+                    city : 'Grafton',
+                    type : library
+                },
+                {
+                    library : 'Richmond Free',
+                    county : 'Chittenden',
+                    position : {lat: 44.40322733700049, lng:-72.99505855899963},
+                    web_address : 'www.richmondfreelibraryvt.org',
+                    city : 'Richmond',
+                    type : library
+                },
+                {
+                    library : 'Tunbridge Public',
+                    county : 'Orange',
+                    position : {lat: 43.889650771000504,lng: -72.49225538199966},
+                    web_address : 'www.tunbridgelibrary.org',
+                    city : 'Tunbridge',
+                    type : library
+                },
+                {
+                    library : 'Aldrich Public',
+                    county : 'Washington',
+                    position : {lat: 44.197215876000485,lng: -72.50097974199963},
+                    web_address : 'www.aldrich.lib.vt.us',
+                    city : 'Barre',
+                    type : library
+                },
+                {
+                    library : 'Milton Public',
+                    county : 'Chittenden',
+                    position : {lat: 44.61967226200045, lng:-73.12415920099966},
+                    web_address : 'www.miltonlibraryvt.org',
+                    city : 'Milton',
+                    type : library
+                },
+                {
+                    library : 'J. G. McCullough Free',
+                    county : 'Bennington',
+                    position : {lat: 42.92894538100046, lng:-73.24249119199965},
+                    web_address : 'www.mccullough.lib.vt.us ',
+                    city : 'North Bennington',
+                    type : library
+                },
+                {
+                    library : 'Townshend Public',
+                    county : 'Windham',
+                    position : {lat: 43.04530769900049, lng:-72.66682313799964},
+                    web_address : 'www.townshendlibrary.org',
+                    city : 'Townshend',
+                    type : library
+                },
+                {
+                    library : 'Charles B. Danforth',
+                    county : 'Windsor',
+                    position : {lat: 43.729065240000466,lng: -72.61981468499965},
+                    web_address : 'N/A', city : 'Barnard',
+                    type : library
+                }
+            ];
+
+            var parent = document.getElementById("library");
+            for (var i = 0; i<libs.length; i++) {
+                placeMarker(libs[i].position, libs[i].type, libs[i].library);
+                var selectOption = document.createElement("option");
+                selectOption.setAttribute("value", libs[i].library)
+                selectOption.innerHTML = libs[i].library;
+                parent.appendChild(selectOption);
+            }
+
         }
 
         function handleLocationError(browserHasGeolocation, pos) {
         }
-        //for (var i = 0, feature; feature = features[i]; i++) {
-        //  addLibraryMarker(feature);
-        //}
+
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhZ9PFkK-3Kqk_ewYPTvtcZmkAroOlV3k&callback=initMap">
     </script>
-    <div id="eventform" class="item"><h2 id="toggleForm" class="center">Request or Post an Event</h2>
+    <div id="eventform" class="item"><h2 id="toggleForm" class="center">
+        Request or Post an Event</h2>
+        <script type="text/javascript" src="scriptfile.js"></script>
         <form action="index.html#theTable">
             Name:<br>
             <input type="text" name="name"><br>
             Choose a library:<br>
-            <select name="library">
-                <option value="a">Library A</option>
-                <option value="b">Library B</option>
+            <select name="library" id="library">
             </select><br>
             I am...<br>
             <input type="radio" name="eventtype" value="request">Requesting an event<br>
@@ -171,14 +1636,11 @@
                 <td class="name">Hugh Treeman</td>
                 <td class="date">2016-11-6</td>
                 <td class="time">3:30 PM - 5:30 PM</td>
-                <td class="desc">Okay, at this point I'm sure it's not going to be a good time at all. I'm sorry, just
-                    don't even bother coming.
-                </td>
+                <td class="desc">Okay, at this point I'm sure it's not going to be a good time at all. I'm sorry, just don't even bother coming.</td>
             </tr>
         </table>
     </div>
 </div>
-<script type="text/javascript" src="scriptfile.js"></script>
 <footer>
     <p>Data Provided by <a href="http://libraries.vermont.gov">Vermont Department of Libraries</a></p>
     <p>Developed by Colin Graf, Jack Hurley, Liam Beliveau, Daniel Combs, and Tim Stevens</p>
