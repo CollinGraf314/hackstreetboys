@@ -31,18 +31,20 @@ type Event struct {
 
 /// Handles the POST requests from the form on the main page
 func handler(w http.ResponseWriter, r *http.Request) {
-  // var (
-  //   name = r.PostFormValue("name")
-  //   library = r.PostFormValue("library")
-  //   eventtype = r.PostFormValue("eventtype")
-  //   date = r.PostFormValue("date")
-  //   starttime = r.PostFormValue("starttime")
-  //   endtime = r.PostFormValue("enttime")
-  //   description = r.PostFormValue("description")
-  // )
+  var (
+    name = r.FormValue("name")
+    library = r.FormValue("library")
+    eventtype = r.FormValue("eventtype")
+    date = r.FormValue("date")
+    starttime = r.FormValue("starttime")
+    endtime = r.FormValue("enttime")
+    description = r.FormValue("description")
+  )
 
-
-
+  sql := InitDB()
+  sql.Query("INSERT INTO events VALUES ($1,$2,$3,$4,$5,$6,$7)",
+      name, library, eventtype, date, starttime,
+      endtime, description)
 }
 
 /// Handler for "/"
@@ -56,7 +58,7 @@ fmt.Println("Recieved on /")
     fmt.Println("Opened file successfully")
   }
 
-  var htmlBuffer []byte = make([]byte, 0)
+  var htmlBuffer []byte = make([]byte, 1024 * 1024)
   nBytes, errRead := file.Read(htmlBuffer)
 
   if (errRead != nil) {
