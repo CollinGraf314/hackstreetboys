@@ -13,17 +13,12 @@ html{
     background-color: var(--bg_color);
     color: var(--text_color);
 }
-#show{
-    display: none;
-}
-#show:target{
-    display: block;
-}
 h1,h2{
     color: var(--title_color);
 }
 tr:nth-child(odd){
-    background-color: aquamarine;
+    background-color: var(--header_bg_color);
+    color: white;
 }
 li{
     display: block;
@@ -47,21 +42,60 @@ h1.center{
     justify-content: space-around;
     align-items: flex-start;
 }
+#eventform{
+    height: 740px;
+}
+#toggleForm{
+    text-align: center;
+    border: solid thin grey;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    background: grey;
+    background: linear-gradient(lightgrey,grey);
+    background: -webkit-linear-gradient(lightgrey,grey);
+    background: -o-linear-gradient(lightgrey,grey);
+    background: -moz-linear-gradient(lightgrey,grey);
+}
+#toggleForm:active{
+    background: darkgrey;
+    background: linear-gradient(grey,lightgrey);
+    background: -webkit-linear-gradient(grey,lightgrey);
+    background: -o-linear-gradient(grey,lightgrey);
+    background: -moz-linear-gradient(grey,lightgrey);
+}
 .item{
     flex-grow: 2;
     flex-shrink: 2;
     margin: auto;
     max-width: 40%;
+    vertical-align: top;
 }
 form{
     line-height: 1.7em;
+    display: none;
+}
+td,th{
+    padding: .5em;
+    border-collapse: collapse;
+
+}
+.desc{
+    padding: 1.5em;
+    border: solid 2px black;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+}
+table{
+    padding-bottom: 2em;
 }
 @media (max-width: 1024px){
     .container{
         flex-direction: column;
         padding-top: 70px;
     }
-    #map{
+    .item {
         max-width: 80%;
     }
 }
@@ -76,13 +110,13 @@ input, select, textarea, select {
     background-color: #FAFFFA;
 }
 input[type=radio]{
-	padding: 0px;
-	display: inline;
-	width: 15px;
+    padding: 0px;
+    display: inline;
+    width: 15px;
 }
 textarea {
-	width: 80%;
+    width: 80%;
 }
 input:active, select:active, textarea:active, select:active, input:focus, select:focus, textarea:focus, select:focus {
-	background-color: #DCDFDC;
+    background-color: #DCDFDC;
 }
