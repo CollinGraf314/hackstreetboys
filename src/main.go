@@ -21,7 +21,7 @@ type Libraries struct {
 type Event struct {
 	ID     int
 	LibID  int
-	Req    bool
+	Req    string
 	Name   string
 	Stime  string
 	Etime  string
@@ -29,7 +29,7 @@ type Event struct {
 	Desc   string
 }
 
-func readHtml(filename string) string {
+func readHtml(filename, requests, hosts string) string {
   file, err := os.Open(filename)
   if (err != nil) {
     fmt.Printf("An error occured while trying to open the '%s' file\n", filename);
@@ -50,8 +50,14 @@ func readHtml(filename string) string {
   }
 
   strContents := string(htmlBuffer[:nBytes])
+
+  strContents = strings.Replace(strContents, "___REQUESTED_EVENTS_ELEMENTS___", requests)
+  strContents = strings.Replace(strContents, "___HOSTED_EVENTS_ELEMENTS___", hosts)
+  
+
   return strContents
 }
+
 
 /// Handles the GET requests from the form on the main page
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -76,10 +82,13 @@ func handler(w http.ResponseWriter, r *http.Request) {
       name, library, eventtype, date, starttime,
       endtime, description)
 
-  content := readHtml("../submitForm.html")
-  fmt.Println(content)
+  reqests := libEvents(sql, library, "request")
+  hosts := libEvents(sql, library, "host")
+
+  content := readHtml("../submitForm.html", requests, hosts)
   fmt.Fprint(w, content)
 }
+
 
 /// Handler for "/"
 func mainHandler(w http.ResponseWriter, r *http.Request) {
@@ -87,6 +96,7 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
   fmt.Println(strContents)
   fmt.Fprint(w, strContents)
 }
+
 
 /// Idempotent function which creates a singleton instance of the database
 func InitDB() *sql.DB {
@@ -97,12 +107,35 @@ func InitDB() *sql.DB {
 	return __db
 }
 
+
 /// Queries the database for all events at a given library
-func libEvents (db *sql.DB, LID int) *sql.Rows {
-	sql_libEvents :=`SELECT * FROM events WHERE  libId = $1`
-	rows, err := db.Query(sql_libEvents, LID)
+func libEvents (db *sql.DB, LID int, eType string) string {
+	sql_libEvents :=`SELECT * FROM events WHERE libId = $1 and Req = $2`
+	rows, err := db.Query(sql_libEvents, LID, eType)
 	if err != nil { panic(err) }
-	return rows
+  defer rows.Close()
+
+  var element string
+
+  for rows.Next() {
+    var name, library, eventtype, date, starttime, endtime, description string
+
+      err = rows.Scan(&name, &library, &eventtype, &date, &starttime, &endtime, &description)
+
+      element += Sprintf(`
+        <tr>
+          <td>%s</td>
+          <td>%s</td>
+          <td>%s</td>
+          <td>%s</td>
+          <td>%s</td>
+          <td>%s</td>
+          <td>%s</td>
+        </tr>
+      `, name, library, eventtype, data, starttime, endtime, description)
+  }
+
+	return element
 }
 
 func main() {
