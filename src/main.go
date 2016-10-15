@@ -152,8 +152,25 @@ func libEvents(db *sql.DB, LID string, eType string) string {
 
 
 func main() {
+    http.HandlerFunc("/res/Icon.png", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/res/Icon.png")
+    })
+    http.HandlerFunc("/libraryLocation.png", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/libraryLocation.png")
+    })
+    http.HandlerFunc("/myLocation.png", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/myLocation.png")
+    })
+    http.HandlerFunc("/scriptfile.js", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/scriptfile.js")
+    })
+    http.HandlerFunc("/style.css", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/style.css")
+    })
+    http.HandleFunc("/index.html", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/index.html")
+    })
+    http.HandleFunc("/submitForm.html", handler)
 
-    http.HandleFunc("/submitForm", handler)
-    http.HandleFunc("/", mainHandler)
     http.ListenAndServe(":8080", nil)
 }
