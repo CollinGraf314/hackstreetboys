@@ -2,6 +2,7 @@ package commentjson
 
 import "fmt"
 
+/// Transforms the database query results into json (can be emmitted by the server)
 func Export(name string, library string, eventtype string, date string, starttime string, endtime string, description string) string {
   /*
     Export as
