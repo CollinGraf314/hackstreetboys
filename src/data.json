@@ -1,0 +1,622 @@
+{
+        "id" : 126557903,
+        "name" : "Town",
+        "dataTypeName" : "text",
+        "fieldName" : "town",
+        "position" : 3,
+        "renderTypeName" : "text",
+        "tableColumnId" : 17331180,
+        "width" : 148,
+        "cachedContents" : {
+          "non_null" : 183,
+          "largest" : "WOODSTOCK",
+          "null" : 0,
+          "top" : [ {
+            "item" : "WATERBURY",
+            "count" : 20
+          }, {
+            "item" : "WATERVILLE",
+            "count" : 19
+          }, {
+            "item" : "WEATHERSFIELD",
+            "count" : 18
+          }, {
+            "item" : "WELLS",
+            "count" : 17
+          }, {
+            "item" : "BURKE, WEST",
+            "count" : 16
+          }, {
+            "item" : "WEST FAIRLEE",
+            "count" : 15
+          }, {
+            "item" : "HARTFORD, WEST",
+            "count" : 14
+          }, {
+            "item" : "WEST RUTLAND",
+            "count" : 13
+          }, {
+            "item" : "WESTFORD",
+            "count" : 12
+          }, {
+            "item" : "WESTMINSTER WEST",
+            "count" : 11
+          }, {
+            "item" : "CHESTER",
+            "count" : 10
+          }, {
+            "item" : "WHITINGHAM",
+            "count" : 9
+          }, {
+            "item" : "WESTON",
+            "count" : 8
+          }, {
+            "item" : "WINDHAM",
+            "count" : 7
+          }, {
+            "item" : "WINDSOR",
+            "count" : 6
+          }, {
+            "item" : "WINHALL",
+            "count" : 5
+          }, {
+            "item" : "WINOOSKI",
+            "count" : 4
+          }, {
+            "item" : "TROY",
+            "count" : 3
+          }, {
+            "item" : "WOODBURY",
+            "count" : 2
+          } ],
+          "smallest" : "ALBANY"
+        },
+        "id" : 126557904,
+        "name" : "Library",
+        "dataTypeName" : "text",
+        "fieldName" : "library",
+        "position" : 4,
+        "renderTypeName" : "text",
+        "tableColumnId" : 17331181,
+        "width" : 184,
+        "cachedContents" : {
+          "non_null" : 183,
+          "largest" : "Woodbury Community",
+          "null" : 0,
+          "top" : [ {
+            "item" : "Waterbury Public",
+            "count" : 20
+          }, {
+            "item" : "Waterville Town",
+            "count" : 19
+          }, {
+            "item" : "Weathersfield Proctor",
+            "count" : 18
+          }, {
+            "item" : "Wells Village",
+            "count" : 17
+          }, {
+            "item" : "West Burke",
+            "count" : 16
+          }, {
+            "item" : "West Fairlee Free Public",
+            "count" : 15
+          }, {
+            "item" : "West Hartford",
+            "count" : 14
+          }, {
+            "item" : "West Rutland Public",
+            "count" : 13
+          }, {
+            "item" : "Westford Public",
+            "count" : 12
+          }, {
+            "item" : "Westminster West Public",
+            "count" : 11
+          }, {
+            "item" : "Whiting",
+            "count" : 10
+          }, {
+            "item" : "Whitingham Free Public",
+            "count" : 9
+          }, {
+            "item" : "Wilder Memorial",
+            "count" : 8
+          }, {
+            "item" : "Windham Town ",
+            "count" : 7
+          }, {
+            "item" : "Windsor Public",
+            "count" : 6
+          }, {
+            "item" : "Winhall Memorial",
+            "count" : 5
+          }, {
+            "item" : "Winooski Memorial",
+            "count" : 4
+          }, {
+            "item" : "Wm. & Lucy Rand Memorial",
+            "count" : 3
+          }, {
+            "item" : "Woodbury Community",
+            "count" : 2
+          } ],
+          "smallest" : "Abbott Memorial"
+      },
+        "id" : 126557906,
+        "name" : "Street Address",
+        "dataTypeName" : "text",
+        "fieldName" : "street_address",
+        "position" : 6,
+        "renderTypeName" : "text",
+        "tableColumnId" : 17331183,
+        "width" : 135,
+        "cachedContents" : {
+          "non_null" : 183,
+          "largest" : "Vermont 100",
+          "null" : 0,
+          "top" : [ {
+            "item" : "28 N. Main St.",
+            "count" : 20
+          }, {
+            "item" : "850 VT Route 109",
+            "count" : 19
+          }, {
+            "item" : "5181 Rte. 5",
+            "count" : 18
+          }, {
+            "item" : "5 East Wells Rd.",
+            "count" : 17
+          }, {
+            "item" : "135 Main St.",
+            "count" : 16
+          }, {
+            "item" : "380 Rte. 113",
+            "count" : 15
+          }, {
+            "item" : "5133 Rte. 14",
+            "count" : 14
+          }, {
+            "item" : "595 Main St.",
+            "count" : 13
+          }, {
+            "item" : "1717 VT Rte. 128",
+            "count" : 12
+          }, {
+            "item" : "3409 Westminster W. Rd.",
+            "count" : 11
+          }, {
+            "item" : "117 Main St.",
+            "count" : 10
+          }, {
+            "item" : "2948 VT Rte. 100",
+            "count" : 9
+          }, {
+            "item" : "24 Lawrence Hill Rd.",
+            "count" : 8
+          }, {
+            "item" : "26 Harrington Rd.",
+            "count" : 7
+          }, {
+            "item" : "43 State St.",
+            "count" : 6
+          }, {
+            "item" : "2 Lower Taylor Hill Rd.",
+            "count" : 5
+          }, {
+            "item" : "1 Main St.",
+            "count" : 4
+          }, {
+            "item" : "160 Railroad St.",
+            "count" : 3
+          }, {
+            "item" : "69 Valley Lake Rd.",
+            "count" : 2
+          } ],
+          "smallest" : "100 Church St."
+        },
+        "id" : 126557907,
+        "name" : "County",
+        "dataTypeName" : "text",
+        "fieldName" : "county",
+        "position" : 7,
+        "renderTypeName" : "text",
+        "tableColumnId" : 17331184,
+        "width" : 79,
+        "cachedContents" : {
+          "non_null" : 183,
+          "largest" : "Windsor",
+          "null" : 0,
+          "top" : [ {
+            "item" : "Windsor",
+            "count" : 20
+          }, {
+            "item" : "Orange",
+            "count" : 19
+          }, {
+            "item" : "Orleans",
+            "count" : 18
+          }, {
+            "item" : "Grand Isle",
+            "count" : 17
+          }, {
+            "item" : "Essex",
+            "count" : 16
+          }, {
+            "item" : "Washington",
+            "count" : 15
+          }, {
+            "item" : "Franklin",
+            "count" : 14
+          }, {
+            "item" : "Rutland",
+            "count" : 13
+          }, {
+            "item" : "Caledonia",
+            "count" : 12
+          }, {
+            "item" : "Bennington",
+            "count" : 11
+          }, {
+            "item" : "Addison",
+            "count" : 10
+          }, {
+            "item" : "Windham",
+            "count" : 9
+          }, {
+            "item" : "Chittenden",
+            "count" : 8
+          }, {
+            "item" : "Lamoille",
+            "count" : 7
+          } ],
+          "smallest" : "Addison"
+        },
+        "id" : 126558005,
+        "name" : "Location 1",
+        "dataTypeName" : "location",
+        "fieldName" : "location_1",
+        "position" : 105,
+        "renderTypeName" : "location",
+        "tableColumnId" : 17331282,
+        "width" : 220,
+        "cachedContents" : {
+          "non_null" : 183,
+          "largest" : {
+            "latitude" : "44.728276363000475",
+            "human_address" : "{\"address\":\"Vermont 100\",\"city\":\"Lowell\",\"state\":\"VT\",\"zip\":\"05847\"}",
+            "longitude" : "-72.49863663099967"
+          },
+          "null" : 0,
+          "top" : [ {
+            "item" : {
+              "latitude" : "44.33993841200049",
+              "human_address" : "{\"address\":\"28 N. Main St.\",\"city\":\"Waterbury\",\"state\":\"VT\",\"zip\":\"05676\"}",
+              "longitude" : "-72.75842418899964"
+            },
+            "count" : 20
+          }, {
+            "item" : {
+              "latitude" : "44.69390750600047",
+              "human_address" : "{\"address\":\"850 VT Route 109\",\"city\":\"Waterville\",\"state\":\"VT\",\"zip\":\"05492\"}",
+              "longitude" : "-72.76637199899966"
+            },
+            "count" : 19
+          }, {
+            "item" : {
+              "latitude" : "43.407071386000496",
+              "human_address" : "{\"address\":\"5181 Rte. 5\",\"city\":\"Ascutney\",\"state\":\"VT\",\"zip\":\"05030\"}",
+              "longitude" : "-72.40751324699966"
+            },
+            "count" : 18
+          }, {
+            "item" : {
+              "latitude" : "43.41703700800048",
+              "human_address" : "{\"address\":\"5 East Wells Rd.\",\"city\":\"Wells\",\"state\":\"VT\",\"zip\":\"05774\"}",
+              "longitude" : "-73.20296625999964"
+            },
+            "count" : 17
+          }, {
+            "item" : {
+              "latitude" : "44.664396516000465",
+              "human_address" : "{\"address\":\"135 Main St.\",\"city\":\"West Burke\",\"state\":\"VT\",\"zip\":\"05871\"}",
+              "longitude" : "-71.95556906999963"
+            },
+            "count" : 16
+          }, {
+            "item" : {
+              "latitude" : "43.901970072000495",
+              "human_address" : "{\"address\":\"380 Rte. 113\",\"city\":\"West Fairlee\",\"state\":\"VT\",\"zip\":\"05083\"}",
+              "longitude" : "-72.26327786799965"
+            },
+            "count" : 15
+          }, {
+            "item" : {
+              "latitude" : "43.71250218500046",
+              "human_address" : "{\"address\":\"5133 Rte. 14\",\"city\":\"West Hartford\",\"state\":\"VT\",\"zip\":\"05084\"}",
+              "longitude" : "-72.41741609399963"
+            },
+            "count" : 14
+          }, {
+            "item" : {
+              "latitude" : "43.594914005000476",
+              "human_address" : "{\"address\":\"595 Main St.\",\"city\":\"West Rutland\",\"state\":\"VT\",\"zip\":\"05777\"}",
+              "longitude" : "-73.04894445599967"
+            },
+            "count" : 13
+          }, {
+            "item" : {
+              "latitude" : "44.612026899000455",
+              "human_address" : "{\"address\":\"1717 VT Rte. 128\",\"city\":\"Westford\",\"state\":\"VT\",\"zip\":\"05494\"}",
+              "longitude" : "-73.01137972299966"
+            },
+            "count" : 12
+          }, {
+            "item" : {
+              "latitude" : "43.06482203100046",
+              "human_address" : "{\"address\":\"3409 Westminster W. Rd.\",\"city\":\"Westminster West\",\"state\":\"VT\",\"zip\":\"05346\"}",
+              "longitude" : "-72.54126743299963"
+            },
+            "count" : 11
+          }, {
+            "item" : {
+              "latitude" : "43.26384310700047",
+              "human_address" : "{\"address\":\"117 Main St.\",\"city\":\"Chester\",\"state\":\"VT\",\"zip\":\"05143\"}",
+              "longitude" : "-72.59709102499966"
+            },
+            "count" : 10
+          }, {
+            "item" : {
+              "latitude" : "42.79867809600046",
+              "human_address" : "{\"address\":\"2948 VT Rte. 100\",\"city\":\"Jacksonville\",\"state\":\"VT\",\"zip\":\"05342\"}",
+              "longitude" : "-72.82274473399963"
+            },
+            "count" : 9
+          }, {
+            "item" : {
+              "latitude" : "43.291561844000455",
+              "human_address" : "{\"address\":\"24 Lawrence Hill Rd.\",\"city\":\"Weston\",\"state\":\"VT\",\"zip\":\"05161\"}",
+              "longitude" : "-72.79469436199963"
+            },
+            "count" : 8
+          }, {
+            "item" : {
+              "latitude" : "43.18042395700047",
+              "human_address" : "{\"address\":\"26 Harrington Rd.\",\"city\":\"Windham\",\"state\":\"VT\",\"zip\":\"05359\"}",
+              "longitude" : "-72.72591451499966"
+            },
+            "count" : 7
+          }, {
+            "item" : {
+              "latitude" : "43.4805225450005",
+              "human_address" : "{\"address\":\"43 State St.\",\"city\":\"Windsor\",\"state\":\"VT\",\"zip\":\"05089\"}",
+              "longitude" : "-72.38846438699966"
+            },
+            "count" : 6
+          }, {
+            "item" : {
+              "latitude" : "43.16947130500046",
+              "human_address" : "{\"address\":\"2 Lower Taylor Hill Rd.\",\"city\":\"Bondville\",\"state\":\"VT\",\"zip\":\"05340\"}",
+              "longitude" : "-72.91855698399962"
+            },
+            "count" : 5
+          }, {
+            "item" : {
+              "latitude" : "44.48975556200048",
+              "human_address" : "{\"address\":\"1 Main St.\",\"city\":\"Winooski\",\"state\":\"VT\",\"zip\":\"05404\"}",
+              "longitude" : "-73.18648283199963"
+            },
+            "count" : 4
+          }, {
+            "item" : {
+              "latitude" : "44.997386393000454",
+              "human_address" : "{\"address\":\"160 Railroad St.\",\"city\":\"North Troy\",\"state\":\"VT\",\"zip\":\"05859\"}",
+              "longitude" : "-72.40538249399964"
+            },
+            "count" : 3
+          }, {
+            "item" : {
+              "latitude" : "44.440652033000504",
+              "human_address" : "{\"address\":\"69 Valley Lake Rd.\",\"city\":\"Woodbury\",\"state\":\"VT\",\"zip\":\"05681\"}",
+              "longitude" : "-72.41624347899966"
+            },
+            "count" : 2
+          } ],
+          "smallest" : {
+            "latitude" : "44.51200232700046",
+            "human_address" : "{\"address\":\"1 Browns River Road\",\"city\":\"Essex\",\"state\":\"VT\",\"zip\":\"05451\"}",
+            "longitude" : "-73.05870399099967"
+          }
+        },
+        "id" : 126558006,
+        "name" : "ZIP+4",
+        "dataTypeName" : "number",
+        "fieldName" : "zip_4",
+        "position" : 106,
+        "renderTypeName" : "number",
+        "tableColumnId" : 17331283,
+        "width" : 159,
+        "cachedContents" : {
+          "non_null" : 173,
+          "average" : "1530.635838150289",
+          "largest" : "9908",
+          "null" : 10,
+          "top" : [ {
+            "item" : "95",
+            "count" : 20
+          }, {
+            "item" : "68",
+            "count" : 19
+          }, {
+            "item" : "500",
+            "count" : 18
+          }, {
+            "item" : "38",
+            "count" : 17
+          }, {
+            "item" : "1213",
+            "count" : 16
+          }, {
+            "item" : "738",
+            "count" : 15
+          }, {
+            "item" : "2222",
+            "count" : 14
+          }, {
+            "item" : "509",
+            "count" : 13
+          }, {
+            "item" : "329",
+            "count" : 12
+          } ],
+          "smallest" : "5",
+          "sum" : "264800"
+        },
+        "id" : 126558007,
+        "name" : "Web address",
+        "dataTypeName" : "text",
+        "fieldName" : "web_address",
+        "position" : 107,
+        "renderTypeName" : "text",
+        "tableColumnId" : 17331284,
+        "width" : 232,
+        "cachedContents" : {
+          "non_null" : 183,
+          "largest" : "wwwhttp://sherlib.wordpress.com",
+          "null" : 0,
+          "top" : [ {
+            "item" : "N/A",
+            "count" : 20
+          }, {
+            "item" : "N/R",
+            "count" : 19
+          }, {
+            "item" : "Sheldon-pl@vals.state.vt.us",
+            "count" : 18
+          }, {
+            "item" : "wwwhttp://sherlib.wordpress.com",
+            "count" : 17
+          }, {
+            "item" : "Shrewsburylibrary.org",
+            "count" : 16
+          }, {
+            "item" : "www.solomonwrightlibrary.org",
+            "count" : 15
+          }, {
+            "item" : "http://sbcl.sbschools.net",
+            "count" : 14
+          }, {
+            "item" : "www.southherocommunitylibrary.blogspot.com",
+            "count" : 13
+          }, {
+            "item" : "londonderryvt.org",
+            "count" : 12
+          }, {
+            "item" : "www.springfieldtownlibrary.org",
+            "count" : 11
+          }, {
+            "item" : "http://www.stalbansfreelibrary.org/",
+            "count" : 10
+          }, {
+            "item" : "www.stjathenaeum.org",
+            "count" : 9
+          }, {
+            "item" : "stamfordlibrary.org",
+            "count" : 8
+          }, {
+            "item" : "starksborolibrary.wordpress.com",
+            "count" : 7
+          }, {
+            "item" : "http://www.stowelibrary.org/",
+            "count" : 6
+          }, {
+            "item" : "http://swantonlibrary.org",
+            "count" : 5
+          }, {
+            "item" : "http://tenneymemoriallibrary.org/",
+            "count" : 4
+          }, {
+            "item" : "www.townshendlibrary.org",
+            "count" : 3
+          }, {
+            "item" : "www.tunbridgelibrary.org",
+            "count" : 2
+          }, {
+            "item" : "www.thevarnum.org",
+            "count" : 1
+          } ],
+          "smallest" : "abbottmemoriallibrary.org"
+        },
+        "id" : 126558008,
+        "name" : "City",
+        "dataTypeName" : "text",
+        "fieldName" : "city",
+        "position" : 108,
+        "renderTypeName" : "text",
+        "tableColumnId" : 17331285,
+        "width" : 101,
+        "cachedContents" : {
+          "non_null" : 183,
+          "largest" : "Woodstock",
+          "null" : 0,
+          "top" : [ {
+            "item" : "Waterbury",
+            "count" : 20
+          }, {
+            "item" : "Waterville",
+            "count" : 19
+          }, {
+            "item" : "Ascutney",
+            "count" : 18
+          }, {
+            "item" : "Wells",
+            "count" : 17
+          }, {
+            "item" : "West Burke",
+            "count" : 16
+          }, {
+            "item" : "West Fairlee",
+            "count" : 15
+          }, {
+            "item" : "West Hartford",
+            "count" : 14
+          }, {
+            "item" : "West Rutland",
+            "count" : 13
+          }, {
+            "item" : "Westford",
+            "count" : 12
+          }, {
+            "item" : "Westminster West",
+            "count" : 11
+          }, {
+            "item" : "Chester",
+            "count" : 10
+          }, {
+            "item" : "Jacksonville",
+            "count" : 9
+          }, {
+            "item" : "Weston",
+            "count" : 8
+          }, {
+            "item" : "Windham",
+            "count" : 7
+          }, {
+            "item" : "Windsor",
+            "count" : 6
+          }, {
+            "item" : "Bondville",
+            "count" : 5
+          }, {
+            "item" : "Winooski",
+            "count" : 4
+          }, {
+            "item" : "North Troy",
+            "count" : 3
+          }, {
+            "item" : "Woodbury",
+            "count" : 2
+          } ],
+          "smallest" : "Albany"
+        }
+}

@@ -7,20 +7,20 @@ package readdata
 
 import "os"
 import "fmt"
+import "encoding/csv"
 
-func ReadData () {
+func ReadData ()  {
   file, openError := os.Open("../data.json")
 
   if (openError != nil) {
-    log.Fatal("An error occured while attempting to open the data file (does it exist?)")
-    return _,nil;
+    panic(openError)
   }
 
-  var data []byte = make([]byte, 100);
-  nBytes, readError := file.Read(data)
-  fmt.Println("%d bytes read", nBytes);
+  var data []byte = make([]byte, 100)
+  nBytes, _ := file.Read(data)
+  fmt.Println("%d bytes read", nBytes)
   fmt.Println("Data:")
-  for i:=0;i<nBytes;i++ {
+  for i:=0;i< nBytes;i++ {
     fmt.Print("%v", data[i])
   }
 }
