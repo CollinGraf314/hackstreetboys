@@ -1,0 +1,9 @@
+
+CREATE TABLE IF NOT EXISTS libraries(
+  Id INT PRIMARY KEY,
+  Name VARCHAR(255),
+  Town VARCHAR(255),
+  Mailing VARCHAR(255),
+  Street VARCHAR(255),
+  Phone VARCHAR(255),
+  Web VARCHAR(255));

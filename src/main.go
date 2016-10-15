@@ -4,8 +4,8 @@ import (
     "fmt"
     "net/http"
     "database/sql"
-
-     _"github.com/mattn/go-sqlite3"
+    _"github.com/mattn/go-sqlite3"
+    "os"
 )
 
 type Libraries struct {
@@ -29,63 +29,73 @@ type Event struct {
 	Desc   string
 }
 
+/// Handles the POST requests from the form on the main page
 func handler(w http.ResponseWriter, r *http.Request) {
+  // var (
+  //   name = r.PostFormValue("name")
+  //   library = r.PostFormValue("library")
+  //   eventtype = r.PostFormValue("eventtype")
+  //   date = r.PostFormValue("date")
+  //   starttime = r.PostFormValue("starttime")
+  //   endtime = r.PostFormValue("enttime")
+  //   description = r.PostFormValue("description")
+  // )
+
+
 
 }
 
-func InitDB(filepath string) *sql.DB {
-	db, err := sql.Open("sqlite3", filepath)
-	if err != nil { panic(err) }
-	if db == nil { panic("db nil") }
-	return db
+/// Handler for "/"
+func mainHandler(w http.ResponseWriter, r *http.Request) {
+fmt.Println("Recieved on /")
+  file, err := os.Open("../index.html")
+  if (err != nil) {
+    fmt.Println("An error occured while trying to open the 'index.html' file");
+    return;
+  } else {
+    fmt.Println("Opened file successfully")
+  }
+
+  var htmlBuffer []byte = make([]byte, 0)
+  nBytes, errRead := file.Read(htmlBuffer)
+
+  if (errRead != nil) {
+    fmt.Println("An error occured while trying to read from the index.html file")
+    return;
+  } else {
+    fmt.Println("Read from the file successfully")
+    fmt.Printf("%d bytes read\n", nBytes)
+  }
+
+  strContents := string(htmlBuffer[:nBytes])
+  fmt.Println(strContents)
+  fmt.Fprint(w, strContents)
 }
 
-func CreateLibraryTable(db *sql.DB) {
-	// create table if not exists
-	sql_table := `
-	CREATE TABLE IF NOT EXISTS libraries(
-		Id INT NOT NULL AUtO_INCREMENT,
-		Name VARCHAR(255),
-		Town VARCHAR(255),
-    Mailing VARCHAR(255),
-    Street VARCHAR(255),
-    Phone VARCHAR(255),
-    Web VARCHAR(255),
-    PRIMARY KEY (ID)
-	);
-	`
+var __db *sql.DB
 
-	_, err := db.Exec(sql_table)
-	if err != nil { panic(err) }
+/// Idempotent function which creates a singleton instance of the database
+func InitDB() *sql.DB {
+  if (__db == nil) {
+	   __db, err := sql.Open("sqlite3", "../realdb.db")
+	   if err != nil { panic(err) }
+	   if __db == nil { panic("db nil") }
+  }
+
+	return __db
 }
 
-func createEventTable(db *sql.DB){
-	sql_table :=`CREATE TABLE IF NOT EXISTS events(
-	id INT
-	libId INT
-	req  BOOl
-	name TEXT
-	sTime TEXT
-	eTime TEXT
-	date TEXT
-	desc TEXT
-	)`
-
-	_, err := db.Exec(sql_table)
-	if err != nil { panic(err) }
-}
-
-
-
-func libEvents (db *sql.DB, int LID){
-	sql_libEvents :=`SELECT * FROM events WHERE  libId = $1`, LID
-	rows, err := db.Query(sql_libEvents)
+/// Queries the database for all events at a given library
+func libEvents (db *sql.DB, LID int) *sql.Rows {
+	sql_libEvents :=`SELECT * FROM events WHERE  libId = $1`
+	rows, err := db.Query(sql_libEvents, LID)
 	if err != nil { panic(err) }
 	return rows
 }
 
 func main() {
 
-    http.HandleFunc("/", handler)
+    http.HandleFunc("/submitForm", handler)
+    http.HandleFunc("/", mainHandler)
     http.ListenAndServe(":8080", nil)
 }
