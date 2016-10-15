@@ -1,27 +1,19 @@
-:root {
-    --bg_color: #EFEFEF;
-    --header_bg_color: #C90AFF;
-    --input_bg_color: #E4E3D3;
-    --text_color: #003000;
-    --title_color: #000030;
-}
-
 header {
-    background-color: var(--header_bg_color);
+    background-color: #C90AFF;
 }
 
 html {
     font-family: Times, serif;
-    background-color: var(--bg_color);
-    color: var(--text_color);
+    background-color: #EFEFEF;
+    color: #003000;
 }
 
 h1, h2 {
-    color: var(--title_color);
+    color: #003000;
 }
 
 tr:nth-child(odd) {
-    background-color: var(--header_bg_color);
+    background-color: #C90AFF;
     color: white;
 }
 
@@ -30,7 +22,7 @@ li {
 }
 
 input, textarea {
-    background-color: var(--input_bg_color);
+    background-color: #E4E3D3;
 }
 
 h1.center {
@@ -152,6 +144,6 @@ input:active, select:active, textarea:active, select:active, input:focus, select
 }
 
 footer {
-    background-color: var(--header_bg_color);
+    background-color: #C90AFF;
     text-align: center;
 }
