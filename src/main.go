@@ -6,6 +6,7 @@ import (
     "database/sql"
     _"github.com/mattn/go-sqlite3"
     "os"
+    "strings"
 )
 
 type Libraries struct {
@@ -122,7 +123,7 @@ func libEvents (db *sql.DB, LID int, eType string) string {
 
       err = rows.Scan(&name, &library, &eventtype, &date, &starttime, &endtime, &description)
 
-      element += Sprintf(`
+      element += fmt.Sprintf(`
         <tr>
           <td>%s</td>
           <td>%s</td>
@@ -139,8 +140,25 @@ func libEvents (db *sql.DB, LID int, eType string) string {
 }
 
 func main() {
+    http.HandlerFunc("/res/Icon.png", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/res/Icon.png")
+    })
+    http.HandlerFunc("/libraryLocation.png", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/libraryLocation.png")
+    })
+    http.HandlerFunc("/myLocation.png", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/myLocation.png")
+    })
+    http.HandlerFunc("/scriptfile.js", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/scriptfile.js")
+    })
+    http.HandlerFunc("/style.css", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/style.css")
+    })
+    http.HandleFunc("/index.html", func (w http.ResponseWriter, r *http.Request) {
+      http.ServeFile(w,r,"/index.html")
+    })
+    http.HandleFunc("/submitForm.html", handler)
 
-    http.HandleFunc("/submitForm", handler)
-    http.HandleFunc("/", mainHandler)
     http.ListenAndServe(":8080", nil)
 }
